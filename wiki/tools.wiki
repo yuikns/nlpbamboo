@@ -1,5 +1,5 @@
+#summary 工具的使用
 #labels Phase-Implementation,Featured
-# 工具的使用
 
 = bin/ngm_tool =
 
