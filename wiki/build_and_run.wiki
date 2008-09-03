@@ -30,7 +30,7 @@ make DESTDIR=/path/to/your/place install
 cd /path/to/your/place
 mkdir data_raw
 # 下载人民日报1998年语料库
-
+wget "http://cnlexizer.googlecode.com/files/people-daily.txt.gz"
 gzip -d people-daily.txt.gz
 cd ..
 # 建立辞典
