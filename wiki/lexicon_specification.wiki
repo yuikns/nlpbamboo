@@ -1,4 +1,5 @@
-# 辞典格式
+#summary 辞典格式
+#labels Phase-Implementation
 
 = 辞典源文件格式 =
 {{{
