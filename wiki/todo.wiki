@@ -9,3 +9,4 @@
 
   * 给出MLE & ELE的文档说明
   * 给出通过DP计算UNIGRAM的文档说明
+  * 给出DoubleArray的实现说明
