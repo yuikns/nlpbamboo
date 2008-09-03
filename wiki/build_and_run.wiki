@@ -1,0 +1,49 @@
+#summary 如何编译和运行
+
+= 编译 =
+
+  # 从google code的subversion下载cnlexizer源代码。请参考http://code.google.com/p/cnlexizer/source/checkout
+  # 安装CMake编译环境
+     * Slackware 默认自带CMake
+     * Ubuntu & Debian 系统使用: apt-get install cmake
+     * archlinux系统: 使用pacman -S cmake
+     * 其他Linux/Unix系统，请去CMake官方下载源代码编译。地址是:http://www.cmake.org
+  # 安装lua开发环境
+    * ubuntu & debian系统: apt-get install liblua5.1-0-dev
+    * archlinux系统: 使用pacman -S lua
+  # 使用CMake Build系统
+{{{
+cd cnlexizer
+mkdir build
+cd build
+cmake ..
+make
+}}}
+  # 在指定目录里安装系统
+{{{
+make DESTDIR=/path/to/your/place install
+}}} 
+
+= 制作训练集 =
+
+{{{
+cd /path/to/your/place
+mkdir data_raw
+# 下载人民日报1998年语料库
+
+gzip -d people-daily.txt.gz
+cd ..
+# 建立辞典
+bin/auto_build
+}}}
+
+= 更新配置文件 =
+
+编辑/path/to/your/place/etc/cnlexizer.cfg, 将root变量修改为/path/to/your/place
+
+= 运行命令工具 =
+
+{{{
+cd /path/to/your/place
+bin/cnlexizer_cli -c etc/cnlexizer.cfg
+}}}
