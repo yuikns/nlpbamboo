@@ -1,4 +1,5 @@
 #summary 如何编译和运行
+#labels Phase-Deploy,Featured,Phase-Implementation
 
 = 编译 =
 
