@@ -1,5 +1,5 @@
-#labels Phase-Implementation
-#计划完成的功能
+#summary 计划完成的功能
+#labels Phase-Implementation,Featured
 
 = 代码改进 =
 
