@@ -5,19 +5,9 @@
 
 用来制作NGram原始数据的工具.
 
-从语料库中抽取句子
+从语料库中抽取UniGram
 {{{
-ngm_tool -s corpus.txt > sentences.txt
-}}}
-
-从句子中抽取UniGram
-{{{
-ngm_tool -w sentences.txt > unigram.txt
-}}}
-
-从句子中抽取BiGram
-{{{
-ngm_tool -b sentences.txt > bigram.txt
+ngm_tool -u 语料库 > unigram.txt
 }}}
 
 = bin/cf_tool =
