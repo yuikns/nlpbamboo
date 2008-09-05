@@ -1,11 +1,14 @@
 ﻿#summary 应用程序接口
 #labels Featured,Phase-Implementation
+= C 语言 =
 
 == 初始化 ==
 
 {{{
 void * cnlexizer_init(const char *cfg);
 }}}
+
+初始化cnlexizer。读入字典、加载各类处理模块。
 
 === 参数 ===
 
@@ -21,6 +24,8 @@ void * cnlexizer_init(const char *cfg);
 size_t cnlexizer_process(void *handle, char *t, const char *s);
 }}}
 
+进行分词
+
 === 参数 ===
 
   * *handle*: 由cnlexizer_init初始化好的句柄
@@ -35,6 +40,8 @@ size_t cnlexizer_process(void *handle, char *t, const char *s);
 {{{
 void cnlexizer_clean(void *handle);
 }}}
+
+销毁cnlexizer。从内存中卸载字典。
 
 === 参数 ===
   * *handle*: 由cnlexizer_init初始化好的句柄
