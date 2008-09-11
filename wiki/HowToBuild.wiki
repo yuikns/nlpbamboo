@@ -12,6 +12,8 @@
   # 安装lua开发环境
     * ubuntu & debian系统: apt-get install liblua5.1-0-dev
     * archlinux系统: 使用pacman -S lua
+  # 安装CRF++
+    * 请参考 http://crfpp.sourceforge.net
   # 使用CMake Build系统
 {{{
 cd cnlexizer
