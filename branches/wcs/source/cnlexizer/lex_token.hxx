@@ -33,7 +33,7 @@ public:
 	}
 	int get_attr() {return _attr;}
 	size_t get_length {return _length;}
-	char *get_token() {return _token;}
+	wchar_t *get_token() {return _token;}
 };
 
 #endif
