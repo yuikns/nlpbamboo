@@ -60,8 +60,10 @@ void CRF2Processor::process(std::vector<LexToken *> &in, std::vector<LexToken *>
 
 		wchar_t tmp_token[2];
 		for(j = 0; j < len; ++j) {
-			wcsncpy(tmp_token, s+j, 1);
-			if(iswspace(*tmp_token)) continue;
+			if(iswspace(s[j])) continue;
+
+			*tmp_token = s[j];
+			*(tmp_token+1) = L'\0';
 			
 			LexToken *t = new LexToken(tmp_token, LexToken::attr_cword);
 			atom_tok.push_back(t);
@@ -84,17 +86,17 @@ void CRF2Processor::_crf2_tagger(std::vector<LexToken *> &in, std::vector<LexTok
 
 	for (i = 0; i < size; ++i) {
 		LexToken *cur_tok = in[i];
-		size_t tok_size = cur_tok->get_length();
-		size_t max_tok_buf_size = tok_size*4;
-		size_t max_buf_size = max_tok_buf_size+12;
+		size_t mbs_size = wcstombs(NULL, cur_tok->get_token(), 0) + 1;
+		size_t buf_size = mbs_size + 12;
 
-		char *buf = new char[max_buf_size+1];
-		char *tokbuf = new char[max_tok_buf_size+1];
-		wcstombs(tokbuf, cur_tok->get_token(), max_tok_buf_size);
-		snprintf(buf, max_buf_size, "%s %s", tokbuf, _get_crf2_tag(cur_tok->get_attr()));
+		char *buf = new char[buf_size];
+		char *mbsbuf = new char[mbs_size];
+		wcstombs(mbsbuf, cur_tok->get_token(), mbs_size);
+		
+		snprintf(buf, buf_size, "%s %s", mbsbuf, _get_crf2_tag(cur_tok->get_attr()));
 		_tagger->add(buf);
 		delete [] buf;
-		delete [] tokbuf;
+		delete [] mbsbuf;
 	}
 	
 	if (!_tagger->parse()) throw std::runtime_error("crf parse failed!");
@@ -106,8 +108,9 @@ void CRF2Processor::_crf2_tagger(std::vector<LexToken *> &in, std::vector<LexTok
 		int attr = in[i]->get_attr();
 		if(attr==LexToken::attr_alpha || attr==LexToken::attr_number || attr==LexToken::attr_punct)	tag = "S";
 		if (strstr(_ending_tags, _tagger->y2(i))) {
-			wchar_t *wcsbuf = new wchar_t[_result.size()+1];
-			mbstowcs(wcsbuf, _result.c_str(), _result.size());
+			size_t tmp_size = mbstowcs(NULL, _result.c_str(), 0) + 1;
+			wchar_t *wcsbuf = new wchar_t[tmp_size];
+			mbstowcs(wcsbuf, _result.c_str(), tmp_size);
 			out.push_back(new LexToken(wcsbuf, LexToken::attr_cword));
 			_result.clear();
 			delete [] wcsbuf;
