@@ -82,13 +82,13 @@ void CNLexizer::_process(const wchar_t *s)
 	length = _streamline.size();
 	for (i = 0; i < length; i++) {
 		if (_processors[_streamline[i]]) {
+			//_dump_process_queue();
 			_out->clear();
 			_processors[_streamline[i]]->process(*_in, *_out);
 			/* switch in & out queue */
 			_swap = _out;
 			_out = _in;
 			_in = _swap;
-//			_dump_process_queue();
 		} else {
 			std::cerr << "Invalid module name: " << _streamline[i] << std::endl;
 		}

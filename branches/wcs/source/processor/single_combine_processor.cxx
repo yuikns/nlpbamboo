@@ -29,7 +29,7 @@ void SingleCombineProcessor::process(std::vector<LexToken *> &in, std::vector<Le
 	length = in.size();
 	for (i = 0; i < length; i++) {
 		*_combine = '\0';
-		if (in[i]->get_length() == 1) {
+		if (i > 0 && in[i]->get_length() == 1) {
 			wcscpy(_combine, in[i - 1]->get_token());
 			wcscpy(_combine + in[i - 1]->get_length(), in[i]->get_token());
 			if (_lexicon->search(_combine) > 0) {
