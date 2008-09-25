@@ -30,10 +30,10 @@ public:
 
 	void insert(const wchar_t *s, int val)
 	{
-		size_t i = wcstombs(NULL, s, 0);
+		size_t i = wcstombs(NULL, s, 0) + 1;
 		char *mbs;
 		if (i > 0) {
-			mbs = new char[i + 1];
+			mbs = new char[i];
 			wcstombs(mbs, s, i);
 			_trie->insert(mbs, val);
 			delete []mbs;
@@ -42,11 +42,11 @@ public:
 
 	int search(const wchar_t *s)
 	{
-		size_t i = wcstombs(NULL, s, 0);
+		size_t i = wcstombs(NULL, s, 0) + 1;
 		char *mbs;
 		int v;
 		if (i > 0) {
-			mbs = new char[i + 1];
+			mbs = new char[i];
 			wcstombs(mbs, s, i);
 			v = _trie->search(mbs);
 			delete []mbs;

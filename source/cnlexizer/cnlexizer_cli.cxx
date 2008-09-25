@@ -1,5 +1,6 @@
 #include <sys/time.h>
 
+#include <cwchar>
 #include <getopt.h>
 #include <iostream>
 #include <stdexcept>

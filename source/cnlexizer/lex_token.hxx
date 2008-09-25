@@ -22,8 +22,8 @@ public:
 	LexToken(const char *s, int attr = attr_unknow)
 		:_attr(attr)
 	{
-		size_t i = mbstowcs(NULL, s, 0);
-		_token = new wchar_t[i + 1];
+		size_t i = mbstowcs(NULL, s, 0) + 1;
+		_token = (wchar_t *)malloc(i * sizeof(wchar_t));
 		mbstowcs(_token, s, i);
 		_length = wcslen(_token);
 	}
