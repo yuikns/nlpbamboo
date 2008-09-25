@@ -32,6 +32,7 @@ void MaxforwardProcessor::_process(LexToken *token, std::vector<LexToken *> &out
 		max_token_length = (_max_token_length < length - i)?_max_token_length:length - i;
 		for (j = max_token_length; j > 0; j--) {
 			wcsncpy(_token, s + i, j);
+			_token[j] = L'\0';
 			if (_lexicon->search(_token) > 0) break;
 		}
 		if (j == 0) {j = 1;}

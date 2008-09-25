@@ -34,7 +34,6 @@ void UnigramProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 	num_types = _lexicon->num_insert();
 
 	s = token->get_token();
-	std::wcout << "i = " << s << ", j = " << j << std::endl;
 	length = token->get_length();
 	score = new double[length + 1];
 	backref = new size_t[length + 1];
@@ -51,6 +50,7 @@ void UnigramProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 		bool found = false;
 		for (j = 1; j <= max_token_length; j++) {
 			wcsncpy(_token, s + i, j);
+			_token[j] = L'\0';
 			int v = _lexicon->search(_token);
 			if (v > 0) {
 				lp = _ele_estimate(v, num_terms, num_types);
@@ -75,6 +75,7 @@ void UnigramProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 	assert(stack.empty() == true);
 	for (i = length; i > 0;) {
 		wcsncpy(_token, s + backref[i], i - backref[i]);
+		_token[i - backref[i]] = L'\0';
 		stack.push(new LexToken(_token, LexToken::attr_cword));
 		i = backref[i];
 	}
