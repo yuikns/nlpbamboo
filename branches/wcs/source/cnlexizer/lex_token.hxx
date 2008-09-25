@@ -17,7 +17,7 @@ public:
 		attr_cword,
 		attr_punct,
 	};
-	LexToken():_token(NULL), _attr(attr_unknow) {}
+	LexToken():_token(NULL), _length(0), _attr(attr_unknow) {}
 	LexToken(const wchar_t *s, int attr = attr_unknow)
 		:_attr(attr)
 	{
@@ -32,7 +32,7 @@ public:
 		}
 	}
 	int get_attr() {return _attr;}
-	size_t get_length {return _length;}
+	size_t get_length() {return _length;}
 	wchar_t *get_token() {return _token;}
 };
 
