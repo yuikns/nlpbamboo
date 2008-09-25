@@ -6,7 +6,8 @@
 
 class LexToken {
 protected:
-	char *_token;
+	wchar_t *_token;
+	size_t _length;
 	int _attr;
 public:
 	enum attr_t {
@@ -17,10 +18,11 @@ public:
 		attr_punct,
 	};
 	LexToken():_token(NULL), _attr(attr_unknow) {}
-	LexToken(const char *s, int attr = attr_unknow)
+	LexToken(const wchar_t *s, int attr = attr_unknow)
 		:_attr(attr)
 	{
-		_token = strdup(s);
+		_token = wcsdup(s);
+		_length = wcslen(s);
 	}
 	~LexToken()
 	{
@@ -30,6 +32,7 @@ public:
 		}
 	}
 	int get_attr() {return _attr;}
+	size_t get_length {return _length;}
 	char *get_token() {return _token;}
 };
 
