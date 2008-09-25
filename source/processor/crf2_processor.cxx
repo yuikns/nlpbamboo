@@ -91,7 +91,7 @@ void CRF2Processor::_crf2_tagger(std::vector<LexToken *> &in, std::vector<LexTok
 		char *buf = new char[max_buf_size+1];
 		char *tokbuf = new char[max_tok_buf_size+1];
 		wcstombs(tokbuf, cur_tok->get_token(), max_tok_buf_size);
-		snprintf(buf, max_buf_size, "%s %s", tok_buf, _get_crf2_tag(cur_tok->get_attr()));
+		snprintf(buf, max_buf_size, "%s %s", tokbuf, _get_crf2_tag(cur_tok->get_attr()));
 		_tagger->add(buf);
 		delete [] buf;
 		delete [] tokbuf;
@@ -106,7 +106,7 @@ void CRF2Processor::_crf2_tagger(std::vector<LexToken *> &in, std::vector<LexTok
 		int attr = in[i]->get_attr();
 		if(attr==LexToken::attr_alpha || attr==LexToken::attr_number || attr==LexToken::attr_punct)	tag = "S";
 		if (strstr(_ending_tags, _tagger->y2(i))) {
-			wchar_t wcsbuf = new wchar_t[_result.size()+1];
+			wchar_t *wcsbuf = new wchar_t[_result.size()+1];
 			mbstowcs(wcsbuf, _result.c_str(), _result.size());
 			out.push_back(new LexToken(wcsbuf, LexToken::attr_cword));
 			_result.clear();

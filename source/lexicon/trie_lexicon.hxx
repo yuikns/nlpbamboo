@@ -27,6 +27,38 @@ public:
 	{
 		delete _trie;
 	}
+
+	void insert(const wchar_t *s, int val)
+	{
+		size_t i = wcstombs(NULL, s, 0);
+		char *mbs;
+		if (i > 0) {
+			mbs = new char[i + 1];
+			wcstombs(mbs, s, i);
+			_trie->insert(mbs, val);
+			delete []mbs;
+		}
+	}
+
+	int search(const wchar_t *s)
+	{
+		size_t i = wcstombs(NULL, s, 0);
+		char *mbs;
+		int v;
+		if (i > 0) {
+			mbs = new char[i + 1];
+			wcstombs(mbs, s, i);
+			v = _trie->search(mbs);
+			delete []mbs;
+		}
+
+		return v;
+	}
+	
+	int operator[](const wchar_t *s)
+	{
+		return search(s);
+	}
 	
 	void insert(const char *s, int val)
 	{

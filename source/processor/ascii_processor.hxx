@@ -18,19 +18,22 @@ protected:
 		return (token->get_attr() == LexToken::attr_unknow);
 	}
 	void _process(LexToken *token, std::vector<LexToken *> &out);
-	/*
+/*	
 	void _load_lexicon(DATrie &trie, const char *s)
 	{
 		size_t length, i;
-		char token[8];
+		wchar_t *wcs;
 
-		length = utf8::length(s);
+		length = mbstowcs(NULL, s, 0);
+		wcs = new wchar_t[length + 1];
+		mbstowcs(wcs, s, length);
+
 		for (i = 0; i < length; i++) {
-			utf8::sub(token, s, i, 1);
-			trie.insert(token, 1);
+			trie.insert(wcs[i], 1);
 		}
+		delete []wcs;
 	}
-	*/
+*/	
 public:
 	AsciiProcessor(IConfig *config);
 	~AsciiProcessor() {};

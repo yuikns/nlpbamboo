@@ -34,6 +34,18 @@ protected:
 	std::vector<LexToken *> _lex_token[2];
 	std::vector<LexToken *> *_in, *_out, *_swap;
 	std::map<std::string, Processor *> _processors;
+
+	void _dump_process_queue()
+	{
+		size_t i, length = _in->size();
+		LexToken *token;
+
+		for (i = 0; i < length; i++) {
+			token = (*_in)[i];
+			std::wcout << "token = " << token->get_token() 
+				<< ", attr = " << (int)token->get_attr() << std::endl;
+		}
+	}
 };
 
 #endif

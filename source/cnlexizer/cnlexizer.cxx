@@ -3,6 +3,8 @@
 #include <cstring>
 #include <iostream>
 #include <stdexcept>
+#include <cwchar>
+#include <locale>
 
 #include "cnlexizer.hxx"
 #include "ascii_processor.hxx"
@@ -51,12 +53,15 @@ CNLexizer::CNLexizer(const char *file)
 			_processors["single_combine"] = new SingleCombineProcessor(_config);
 	}
 	delete []text;
+
+	std::locale::global(std::locale("zh_CN.UTF-8"));
 }
 
 size_t CNLexizer::process(char *t, const char *s)
 {
-	char *neo, *p = t;
-	size_t i, length;
+	char *p = t;
+	size_t i, j, length;
+	LexToken *token;
 
 	assert(_in->empty());
 	*t = '\0';
@@ -65,6 +70,7 @@ size_t CNLexizer::process(char *t, const char *s)
 	length = _streamline.size();
 	for (i = 0; i < length; i++) {
 		if (_processors[_streamline[i]]) {
+			_dump_process_queue();
 			_out->clear();
 			_processors[_streamline[i]]->process(*_in, *_out);
 			/* switch in & out queue */
@@ -79,12 +85,15 @@ size_t CNLexizer::process(char *t, const char *s)
 	*p = L'\0';
 	length = _in->size();
 	for (i = 0; i < length; i++) {
-		wcscpy(p, (*_in)[i]->get_token());
-		p += (*_in)[i]->get_length();
-		*(p++) = L' ';
-		*p = L'\0';
+		token = (*_in)[i];
+		std::wcout << token->get_token() << std::endl;
+		j = wcstombs(NULL, token->get_token(), 0);
+		wcstombs(p, token->get_token(), j);
+		p += j;
+		*(p++) = ' ';
 		delete (*_in)[i];
 	}
+	*p = '\0';
 	_in->clear();
 	assert(_in->empty());
 	return p - t;
