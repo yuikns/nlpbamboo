@@ -48,7 +48,8 @@ void CRF2Processor::process(std::vector<LexToken *> &in, std::vector<LexToken *>
 
 		LexToken *cur_token = in[i];
 		int tok_attr = cur_token->get_attr();
-		const char *s = cur_token->get_token();
+		const wchar_t *s = cur_token->get_token();
+		size_t len = cur_token->get_length();
 
 		if(tok_attr==LexToken::attr_alpha
 		|| tok_attr==LexToken::attr_number
@@ -57,12 +58,12 @@ void CRF2Processor::process(std::vector<LexToken *> &in, std::vector<LexToken *>
 			continue;
 		}
 
-		size_t len = utf8::length(s);
+		wchar_t tmp_token[2];
 		for(j = 0; j < len; ++j) {
-			size_t tmp_len = utf8::sub(_token, s, j, 1);
-			if(tmp_len==1 && isspace(*_token)) continue;
+			wcsncpy(tmp_token, s+j, 1);
+			if(iswspace(*tmp_token)) continue;
 			
-			LexToken *t = new LexToken(_token, LexToken::attr_cword);
+			LexToken *t = new LexToken(tmp_token, LexToken::attr_cword);
 			atom_tok.push_back(t);
 		}
 		delete in[i];
@@ -78,18 +79,22 @@ void CRF2Processor::process(std::vector<LexToken *> &in, std::vector<LexToken *>
 
 void CRF2Processor::_crf2_tagger(std::vector<LexToken *> &in, std::vector<LexToken *> &out) {
 	size_t i, size = in.size();
-	enum {max_str_size=32, max_buf_size=40};
-	char buf[max_buf_size];
 
 	_tagger->clear();
 
 	for (i = 0; i < size; ++i) {
 		LexToken *cur_tok = in[i];
-		size_t tok_size = strlen(cur_tok->get_token());
-		if(tok_size>max_str_size) tok_size=max_str_size;
-		snprintf(buf, max_buf_size-1, "%.*s %s", tok_size,
-			cur_tok->get_token(), _get_crf2_tag(cur_tok->get_attr()));
+		size_t tok_size = cur_tok->get_length();
+		size_t max_tok_buf_size = tok_size*4;
+		size_t max_buf_size = max_tok_buf_size+12;
+
+		char *buf = new char[max_buf_size+1];
+		char *tokbuf = new char[max_tok_buf_size+1];
+		wcstombs(tokbuf, cur_tok->get_token(), max_tok_buf_size);
+		snprintf(buf, max_buf_size, "%s %s", tok_buf, _get_crf2_tag(cur_tok->get_attr()));
 		_tagger->add(buf);
+		delete [] buf;
+		delete [] tokbuf;
 	}
 	
 	if (!_tagger->parse()) throw std::runtime_error("crf parse failed!");
@@ -101,8 +106,11 @@ void CRF2Processor::_crf2_tagger(std::vector<LexToken *> &in, std::vector<LexTok
 		int attr = in[i]->get_attr();
 		if(attr==LexToken::attr_alpha || attr==LexToken::attr_number || attr==LexToken::attr_punct)	tag = "S";
 		if (strstr(_ending_tags, _tagger->y2(i))) {
-			out.push_back(new LexToken(_result.c_str(), LexToken::attr_cword));
+			wchar_t wcsbuf = new wchar_t[_result.size()+1];
+			mbstowcs(wcsbuf, _result.c_str(), _result.size());
+			out.push_back(new LexToken(wcsbuf, LexToken::attr_cword));
 			_result.clear();
+			delete [] wcsbuf;
 		}
 		delete in[i];
 	}

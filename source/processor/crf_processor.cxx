@@ -25,14 +25,17 @@ CRFProcessor::~CRFProcessor()
 void CRFProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 {
 	size_t length, i, j;
-	char *s;
+	wchar_t *s;
+	enum { max_buf_len=16 };
+	wchar_t buf[max_buf_len];
 
 
 	_tagger->clear();
 	s = token->get_token();
-	length = utf8::length(s);
+	length = token->get_length();
 	for (i = 0; i < length; i++) {
-		utf8::sub(_token, s, i, 1);
+		if(wctomb(_token, s[i])==-1)
+			continue;
 		_tagger->add(_token);
 	}
 	
@@ -42,7 +45,8 @@ void CRFProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 	for (i = 0; i < _tagger->size(); ++i) {
 		_result.append(_tagger->x(i, 0));
 		if (strstr(_ending_tags, _tagger->y2(i))) {
-			out.push_back(new LexToken(_result.c_str(), LexToken::attr_cword));
+			mbstowcs(buf, _result.c_str(), max_buf_len-1);
+			out.push_back(new LexToken(buf, LexToken::attr_cword));
 			_result.clear();
 		}
 	}
