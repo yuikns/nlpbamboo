@@ -1,8 +1,9 @@
-#include "lexicon_factory.hxx"
-#include "unigram_processor.hxx"
-#include "utf8.hxx"
+#include <cwchar>
 #include <cassert>
 #include <iostream>
+
+#include "lexicon_factory.hxx"
+#include "unigram_processor.hxx"
 
 UnigramProcessor::UnigramProcessor(IConfig *config)
 {
@@ -24,16 +25,16 @@ UnigramProcessor::~UnigramProcessor()
 
 void UnigramProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 {
-	size_t i, j, k, length, max_token_length, *backref;
+	size_t i, j, length, max_token_length, *backref;
 	double *score, lp;
 	size_t num_terms, num_types;
-	const char *s;
+	wchar_t *s;
 
-	s = token->get_token();
 	num_terms = _lexicon->sum_value();
 	num_types = _lexicon->num_insert();
 
-	length = utf8::length(s);
+	s = token->get_token();
+	length = token->get_length();
 	score = new double[length + 1];
 	backref = new size_t[length + 1];
 
@@ -48,7 +49,7 @@ void UnigramProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 		max_token_length = (_max_token_length < length - i)?_max_token_length:length - i;
 		bool found = false;
 		for (j = 1; j <= max_token_length; j++) {
-			k = utf8::sub(_token, s, i, j);
+			wcsncpy(_token, s + i, j);
 			int v = _lexicon->search(_token);
 			if (v > 0) {
 				lp = _ele_estimate(v, num_terms, num_types);
@@ -71,8 +72,8 @@ void UnigramProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 	}
 
 	assert(stack.empty() == true);
-	for (k = 0, i = length; i > 0;) {
-		k = utf8::sub(_token, s, backref[i], i - backref[i]);
+	for (i = length; i > 0;) {
+		wcsncpy(_token, s + backref[i], i - backref[i]);
 		stack.push(new LexToken(_token, LexToken::attr_cword));
 		i = backref[i];
 	}

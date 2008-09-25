@@ -3,6 +3,8 @@
 
 #include <math.h>
 #include <stack>
+#include <cwchar>
+
 #include "lex_token.hxx"
 #include "processor.hxx"
 #include "ilexicon.hxx"
@@ -12,7 +14,7 @@ protected:
 	ILexicon *_lexicon;
 	double _lambda;
 	int _max_token_length;
-	char *_token;
+	wchar_t *_token;
 	std::stack<LexToken *> stack;
 
 	UnigramProcessor();

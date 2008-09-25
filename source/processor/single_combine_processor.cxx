@@ -3,7 +3,6 @@
 
 #include "lexicon_factory.hxx"
 #include "single_combine_processor.hxx"
-#include "utf8.hxx"
 
 SingleCombineProcessor::SingleCombineProcessor(IConfig *config)
 {
@@ -13,7 +12,7 @@ SingleCombineProcessor::SingleCombineProcessor(IConfig *config)
 	_lexicon = LexiconFactory::load(s);
 
 	_max_token_length = 2;
-	_combine = new char[_max_token_length << 2 + 1]; /* x4 for unicode */
+	_combine = new wchar_t[_max_token_length + 1]; /* x4 for unicode */
 }
 
 SingleCombineProcessor::~SingleCombineProcessor()
@@ -25,27 +24,23 @@ SingleCombineProcessor::~SingleCombineProcessor()
 void SingleCombineProcessor::process(std::vector<LexToken *> &in, std::vector<LexToken *> &out)
 {
 	size_t i, j, length, num;
-	int now, last;
 
 	if (in.empty()) return;
 	length = in.size();
 	for (i = 0, last = -1; i < length; i++) {
 		*_combine = '\0';
-		now = utf8::length(in[i]->get_token());
-		if (now == 1 && last == 1) {
+		if (in[i]->get_token() == 1) {
 			strcpy(_combine, in[i - 1]->get_token());
-			strcpy(_combine + strlen(_combine), in[i]->get_token());
+			strcpy(_combine + in[i - 1]->get_length(), in[i]->get_token());
 			if (_lexicon->search(_combine) > 0) {
 				out.pop_back();
 				out.push_back(new LexToken(_combine, LexToken::attr_cword));
+				delete in[i - 1];
 				delete in[i];
-				delete in[i + 1];
 				++i;
-				last = -1;
 				continue;
 			}
 		}
-		last = now;
 		out.push_back(in[i]);
 	}
 }
