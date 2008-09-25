@@ -76,16 +76,15 @@ size_t CNLexizer::process(char *t, const char *s)
 		}
 	}
 
-	*p = '\0';
+	*p = L'\0';
 	length = _in->size();
 	for (i = 0; i < length; i++) {
-		strcpy(p, (*_in)[i]->get_token());
-		p += strlen((*_in)[i]->get_token());
-		*(p++) = ' ';
-		*p = '\0';
+		wcscpy(p, (*_in)[i]->get_token());
+		p += (*_in)[i]->get_length();
+		*(p++) = L' ';
+		*p = L'\0';
 		delete (*_in)[i];
 	}
-	//*(p - 1) = '\0'; //remove trailing space
 	_in->clear();
 	assert(_in->empty());
 	return p - t;
