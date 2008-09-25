@@ -39,7 +39,7 @@ void AsciiProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 	state = last = state_unknow;
 	
 	while (true) {
-		if (iswalpha(*s)) state = state_alpha;
+		if ((*s >= L'a' && *s <= L'z') || (*s >= L'A' && *s <= L'Z')) state = state_alpha;
 		else if (iswdigit(*s)) state = state_number;
 		else if (*s == '.' && last == state_number) state = state_number;
 		else if (iswpunct(*s)) state = state_punctuation;
@@ -53,7 +53,6 @@ void AsciiProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 			if (last == state_alpha) attr = LexToken::attr_alpha;
 			else if (last == state_number) attr = LexToken::attr_number;
 			*top = L'\0';
-			std::wcout << " >> " << stack << std::endl;
 			out.push_back(new LexToken(stack, attr));
 			top = stack;
 			*stack = L'\0';
