@@ -92,9 +92,13 @@ void CRF2Processor::_crf2_tagger(std::vector<LexToken *> &in, std::vector<LexTok
 		char *buf = new char[buf_size];
 		char *mbsbuf = new char[mbs_size];
 		wcstombs(mbsbuf, cur_tok->get_token(), mbs_size);
+		const char *tag = _get_crf2_tag(cur_tok->get_attr());
+
+		const char *data[] = { mbsbuf, tag, NULL };
 		
-		snprintf(buf, buf_size, "%s %s", mbsbuf, _get_crf2_tag(cur_tok->get_attr()));
-		_tagger->add(buf);
+		//snprintf(buf, buf_size, "%s %s", mbsbuf, _get_crf2_tag(cur_tok->get_attr()));
+		//_tagger->add(buf);
+		_tagger->add(2, data);
 		delete [] buf;
 		delete [] mbsbuf;
 	}
