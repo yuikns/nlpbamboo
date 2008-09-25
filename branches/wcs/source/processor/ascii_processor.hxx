@@ -1,10 +1,11 @@
 #ifndef ASCII_PROCESSOR_HXX
 #define ASCII_PROCESSOR_HXX
 
+#include <cwchar>
+
 #include "processor.hxx"
 #include "ilexicon.hxx"
 #include "datrie.hxx"
-#include "utf8.hxx"
 
 class AsciiProcessor: public Processor {
 protected:
@@ -17,6 +18,7 @@ protected:
 		return (token->get_attr() == LexToken::attr_unknow);
 	}
 	void _process(LexToken *token, std::vector<LexToken *> &out);
+	/*
 	void _load_lexicon(DATrie &trie, const char *s)
 	{
 		size_t length, i;
@@ -28,6 +30,7 @@ protected:
 			trie.insert(token, 1);
 		}
 	}
+	*/
 public:
 	AsciiProcessor(IConfig *config);
 	~AsciiProcessor() {};

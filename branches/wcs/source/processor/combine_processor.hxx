@@ -1,6 +1,7 @@
 #ifndef COMBINE_PROCESSOR_HXX
 #define COMBINE_PROCESSOR_HXX
 
+#include <cwchar>
 #include "lex_token.hxx"
 #include "processor.hxx"
 #include "ilexicon.hxx"
@@ -9,8 +10,8 @@ class CombineProcessor: public Processor {
 protected:
 	ILexicon *_lexicon;
 	int _max_token_length;
-	char *_token;
-	char *_combine;
+	wchar_t *_token;
+	wchar_t *_combine;
 
 	CombineProcessor();
 	bool _can_process(LexToken *token) {}

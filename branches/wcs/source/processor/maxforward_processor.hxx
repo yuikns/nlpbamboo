@@ -1,6 +1,8 @@
 #ifndef MAXFORWARD_PROCESSOR_HXX
 #define MAXFORWARD_PROCESSOR_HXX
 
+#include <cwchar>
+
 #include "lex_token.hxx"
 #include "processor.hxx"
 #include "ilexicon.hxx"
@@ -9,7 +11,7 @@ class MaxforwardProcessor: public Processor {
 protected:
 	ILexicon *_lexicon;
 	int _max_token_length;
-	char *_token;
+	wchar_t *_token;
 
 	MaxforwardProcessor();
 	bool _can_process(LexToken *token) 
