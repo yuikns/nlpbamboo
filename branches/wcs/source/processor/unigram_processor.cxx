@@ -14,7 +14,7 @@ UnigramProcessor::UnigramProcessor(IConfig *config)
 	config->get_value("max_token_length", _max_token_length);
 	_lexicon = LexiconFactory::load(s);
 
-	_token = new char[_max_token_length << 2 + 1]; /* x4 for unicode */
+	_token = new wchar_t[_max_token_length + 1]; /* x4 for unicode */
 }
 
 UnigramProcessor::~UnigramProcessor()
@@ -46,6 +46,7 @@ void UnigramProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 	/* Calculate score using DP */
 	score[0] = 0;
 	for (i = 0; i < length; i++) {
+		std::wcout << "i = " << i << ", j = " << j << std::endl;
 		max_token_length = (_max_token_length < length - i)?_max_token_length:length - i;
 		bool found = false;
 		for (j = 1; j <= max_token_length; j++) {

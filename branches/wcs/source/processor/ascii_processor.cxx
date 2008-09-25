@@ -6,8 +6,9 @@
 
 AsciiProcessor::AsciiProcessor(IConfig *config)
 {
-	const char *s;
 /*
+	const char *s;
+
 	config->get_value("chinese_number_end", s);
 	_load_lexicon(_chinese_number_end, s);
 	config->get_value("chinese_punctuation", s);
@@ -19,7 +20,7 @@ AsciiProcessor::AsciiProcessor(IConfig *config)
 
 void AsciiProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 {
-	const wchar_t *s = token->get_token();
+	const wchar_t *s;
 	wchar_t *stack, *top;
 	size_t len;
 	enum {
@@ -31,31 +32,35 @@ void AsciiProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 	} state, last;
 
 	if (token->get_length() == 0) return;
-	stack = new wchar_t [strlen(s) + 1];
+	s = token->get_token();
+	stack = new wchar_t[token->get_length() + 1];
 	*stack = L'\0';
 	top = stack;
 	state = last = state_unknow;
+	
 	while (true) {
-		if (isalpha(*s)) state = state_alpha;
-		else if (isdigit(*s)) state = state_number;
+		if (iswalpha(*s)) state = state_alpha;
+		else if (iswdigit(*s)) state = state_number;
 		else if (*s == '.' && last == state_number) state = state_number;
+		else if (iswpunct(*s)) state = state_punctuation;
 //		else if (_chinese_punctuation.search(wch) > 0 || ispunct(*wch)) state = state_punctuation;
 //		else if (_chinese_number.search(wch) > 0) state = state_number;
 //		else if (_chinese_number_end.search(wch) > 0 && last == state_number) state = state_number;
-		else if (*s == '\0') state = state_end;
+		else if (*s == L'\0') state = state_end;
 		else state = state_unknow;
-		if (last != state && *stack) {
+		if (last != state && *stack != L'\0') {
 			LexToken::attr_t attr = LexToken::attr_unknow;
 			if (last == state_alpha) attr = LexToken::attr_alpha;
 			else if (last == state_number) attr = LexToken::attr_number;
-			*top = '\0';
+			*top = L'\0';
 			out.push_back(new LexToken(stack, attr));
 			top = stack;
-			*stack = '\0';
-			if (state == state_end) break;
+			*stack = L'\0';
 		}
+		if (state == state_end) break;
 		*(top++) = *(s++);
 		last = state;
 	}
+	
 	delete []stack;
 }

@@ -1,6 +1,7 @@
 #ifndef LEX_TOKEN_CXX
 #define LEX_TOKEN_CXX
 
+#include <cwchar>
 #include <cstdlib>
 #include <cstring>
 
@@ -18,6 +19,14 @@ public:
 		attr_punct,
 	};
 	LexToken():_token(NULL), _length(0), _attr(attr_unknow) {}
+	LexToken(const char *s, int attr = attr_unknow)
+		:_attr(attr)
+	{
+		size_t i = mbstowcs(NULL, s, 0);
+		_token = new wchar_t[i + 1];
+		mbstowcs(_token, s, i);
+		_length = wcslen(_token);
+	}
 	LexToken(const wchar_t *s, int attr = attr_unknow)
 		:_attr(attr)
 	{

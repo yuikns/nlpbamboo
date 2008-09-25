@@ -16,6 +16,9 @@ public:
 	ILexicon(int size) {};
 	ILexicon(const char *filename) {};
 
+	virtual void insert(const wchar_t*, int val) = 0;
+	virtual int search(const wchar_t *) = 0;
+	virtual int operator[](const wchar_t *) = 0;
 	virtual void insert(const char*, int val) = 0;
 	virtual int search(const char *) = 0;
 	virtual int operator[](const char *) = 0;

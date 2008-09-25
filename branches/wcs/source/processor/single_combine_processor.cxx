@@ -27,11 +27,11 @@ void SingleCombineProcessor::process(std::vector<LexToken *> &in, std::vector<Le
 
 	if (in.empty()) return;
 	length = in.size();
-	for (i = 0, last = -1; i < length; i++) {
+	for (i = 0; i < length; i++) {
 		*_combine = '\0';
-		if (in[i]->get_token() == 1) {
-			strcpy(_combine, in[i - 1]->get_token());
-			strcpy(_combine + in[i - 1]->get_length(), in[i]->get_token());
+		if (in[i]->get_length() == 1) {
+			wcscpy(_combine, in[i - 1]->get_token());
+			wcscpy(_combine + in[i - 1]->get_length(), in[i]->get_token());
 			if (_lexicon->search(_combine) > 0) {
 				out.pop_back();
 				out.push_back(new LexToken(_combine, LexToken::attr_cword));
