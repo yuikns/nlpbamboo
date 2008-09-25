@@ -34,6 +34,7 @@ void UnigramProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 	num_types = _lexicon->num_insert();
 
 	s = token->get_token();
+	std::wcout << "i = " << s << ", j = " << j << std::endl;
 	length = token->get_length();
 	score = new double[length + 1];
 	backref = new size_t[length + 1];
@@ -46,7 +47,6 @@ void UnigramProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 	/* Calculate score using DP */
 	score[0] = 0;
 	for (i = 0; i < length; i++) {
-		std::wcout << "i = " << i << ", j = " << j << std::endl;
 		max_token_length = (_max_token_length < length - i)?_max_token_length:length - i;
 		bool found = false;
 		for (j = 1; j <= max_token_length; j++) {

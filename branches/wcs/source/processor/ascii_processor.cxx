@@ -53,6 +53,7 @@ void AsciiProcessor::_process(LexToken *token, std::vector<LexToken *> &out)
 			if (last == state_alpha) attr = LexToken::attr_alpha;
 			else if (last == state_number) attr = LexToken::attr_number;
 			*top = L'\0';
+			std::wcout << " >> " << stack << std::endl;
 			out.push_back(new LexToken(stack, attr));
 			top = stack;
 			*stack = L'\0';

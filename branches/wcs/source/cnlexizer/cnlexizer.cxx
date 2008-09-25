@@ -59,43 +59,47 @@ CNLexizer::CNLexizer(const char *file)
 
 size_t CNLexizer::process(char *t, const char *s)
 {
-	char *p = t;
+	size_t length;
+	wchar_t *wcs;
+
+	length = mbstowcs(NULL, s, 0) + 1;
+	wcs = new wchar_t[length];
+	mbstowcs(wcs, s, length);
+	_process(wcs);
+	length = wcstombs(NULL, _result.c_str(), 0) + 1;
+	wcstombs(t, _result.c_str(), length);
+	delete []wcs;
+}
+
+void CNLexizer::_process(const wchar_t *s)
+{
 	size_t i, j, length;
 	LexToken *token;
 
-	assert(_in->empty());
-	*t = '\0';
-	if (*s == '\0') return 0;
+	_result.clear();
+	if (*s == L'\0') return;
 	_in->push_back(new LexToken(s));
 	length = _streamline.size();
 	for (i = 0; i < length; i++) {
 		if (_processors[_streamline[i]]) {
-			_dump_process_queue();
 			_out->clear();
 			_processors[_streamline[i]]->process(*_in, *_out);
 			/* switch in & out queue */
 			_swap = _out;
 			_out = _in;
 			_in = _swap;
+//			_dump_process_queue();
 		} else {
 			std::cerr << "Invalid module name: " << _streamline[i] << std::endl;
 		}
 	}
 
-	*p = L'\0';
 	length = _in->size();
 	for (i = 0; i < length; i++) {
-		token = (*_in)[i];
-		std::wcout << token->get_token() << std::endl;
-		j = wcstombs(NULL, token->get_token(), 0);
-		wcstombs(p, token->get_token(), j);
-		p += j;
-		*(p++) = ' ';
+		_result.append((*_in)[i]->get_token());
+		_result.append(L" ");
 		delete (*_in)[i];
 	}
-	*p = '\0';
 	_in->clear();
-	assert(_in->empty());
-	return p - t;
 }
 

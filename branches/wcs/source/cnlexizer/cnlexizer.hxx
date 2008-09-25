@@ -34,6 +34,9 @@ protected:
 	std::vector<LexToken *> _lex_token[2];
 	std::vector<LexToken *> *_in, *_out, *_swap;
 	std::map<std::string, Processor *> _processors;
+	std::wstring _result;
+
+	void _process(const wchar_t *s);
 
 	void _dump_process_queue()
 	{
