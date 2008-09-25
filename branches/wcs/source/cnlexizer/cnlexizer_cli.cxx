@@ -46,7 +46,7 @@ static int _do(const char *cfg, const char *file)
 			if (s[length - 1] == '\n') s[length - 1] = '\0';
 			if (s[length - 2] == '\r') s[length - 2] = '\0';
 			if (m < n) {
-				m = (n << 2) + 1;
+				m = n*MB_CUR_MAX + 1;
 				t = (char *)realloc(t, m);
 				if (t == NULL) 
 					throw std::bad_alloc();
