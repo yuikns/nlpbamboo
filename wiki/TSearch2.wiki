@@ -3,12 +3,15 @@
 
 = PostgreSQL 分词函数 =
 
-PostgreSQL分词函数需要安装好CNLexizer的系统以及CNLexizer源代码。安装CNLexizer请参考HowToBuild
+PostgreSQL分词函数需要安装好CNLexizer的系统(不需要CNLexizer源代码)。
+如果您的系统中没有安装CNLexizer，请参考：
+  * 从源代码安装CNLexizer：HowToBuild
+  * CNLexizer 二进制包安装方法：BinaryInstall
 
 == 编译和安装 ==
 
 {{{
-$ cd cnlexizer/exts/postgresql/cnlexizer
+$ cd /opt/cnlexizer/exts/postgresql/cnlexizer
 $ make
 $ sudo make install
 }}}
@@ -40,7 +43,7 @@ Tsearch2分词模块需要安装好CNLexizer的系统以及CNLexizer源代码。
 == 编译和安装 ==
 
 {{{
-$ cd cnlexizer/exts/postgresql/chinese_parser
+$ cd /opt/cnlexizer/exts/postgresql/chinese_parser
 $ make
 $ make install
 }}}
