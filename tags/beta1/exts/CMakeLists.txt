@@ -1,2 +1,0 @@
-install(DIRECTORY postgres DESTINATION ${EXT_INSTALL_DIR})
-
