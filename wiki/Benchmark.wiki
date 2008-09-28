@@ -1,0 +1,124 @@
+#summary 测试数据
+#labels Featured
+
+= 人民日报98年一月语料库 =
+
+== CRF 2 Columns ==
+
+process_chain = prepare, crf2, single_combine
+
+=== 北大语料测试 ==
+{{{
+Time: 2975ms
+=== SUMMARY:
+=== TOTAL INSERTIONS:	782
+=== TOTAL DELETIONS:	1553
+=== TOTAL SUBSTITUTIONS:	2326
+=== TOTAL NCHANGE:	4661
+=== TOTAL TRUE WORD COUNT:	104372
+=== TOTAL TEST WORD COUNT:	103601
+=== TOTAL TRUE WORDS RECALL:	0.963
+=== TOTAL TEST WORDS PRECISION:	0.970
+=== F MEASURE:	0.966
+=== OOV Rate:	1.000
+=== OOV Recall Rate:	0.963
+=== IV Recall Rate:	--
+}}}
+
+=== 微软语料测试 ==
+{{{
+Time: 3145ms=== SUMMARY:
+=== TOTAL INSERTIONS:	7129
+=== TOTAL DELETIONS:	2419
+=== TOTAL SUBSTITUTIONS:	8542
+=== TOTAL NCHANGE:	18090
+=== TOTAL TRUE WORD COUNT:	106873
+=== TOTAL TEST WORD COUNT:	111583
+=== TOTAL TRUE WORDS RECALL:	0.897
+=== TOTAL TEST WORDS PRECISION:	0.860
+=== F MEASURE:	0.878
+=== OOV Rate:	1.000
+=== OOV Recall Rate:	0.897
+=== IV Recall Rate:	--
+}}}
+
+== UNIGRAM ==
+
+process_chain = ascii, unigram, single_combine
+
+=== 北大语料测试 ==
+{{{
+Time: 598ms
+=== SUMMARY:
+=== TOTAL INSERTIONS:	1197
+=== TOTAL DELETIONS:	1523
+=== TOTAL SUBSTITUTIONS:	2539
+=== TOTAL NCHANGE:	5259
+=== TOTAL TRUE WORD COUNT:	104372
+=== TOTAL TEST WORD COUNT:	104046
+=== TOTAL TRUE WORDS RECALL:	0.961
+=== TOTAL TEST WORDS PRECISION:	0.964
+=== F MEASURE:	0.963
+=== OOV Rate:	1.000
+=== OOV Recall Rate:	0.961
+=== IV Recall Rate:	--
+}}}
+
+=== 微软语料测试 ==
+{{{
+Time: 783ms
+=== SUMMARY:
+=== TOTAL INSERTIONS:	9352
+=== TOTAL DELETIONS:	1900
+=== TOTAL SUBSTITUTIONS:	9779
+=== TOTAL NCHANGE:	21031
+=== TOTAL TRUE WORD COUNT:	106873
+=== TOTAL TEST WORD COUNT:	114325
+=== TOTAL TRUE WORDS RECALL:	0.891
+=== TOTAL TEST WORDS PRECISION:	0.833
+=== F MEASURE:	0.861
+=== OOV Rate:	1.000
+=== OOV Recall Rate:	0.891
+=== IV Recall Rate:	--
+}}}
+
+
+== CRF 6 Tags + 6 Templates ==
+
+process_chain = ascii, crf, single_combine
+
+=== 北大语料测试 ==
+{{{
+Time: 2138ms
+=== SUMMARY:
+=== TOTAL INSERTIONS:	2623
+=== TOTAL DELETIONS:	2041
+=== TOTAL SUBSTITUTIONS:	5418
+=== TOTAL NCHANGE:	10082
+=== TOTAL TRUE WORD COUNT:	104372
+=== TOTAL TEST WORD COUNT:	104954
+=== TOTAL TRUE WORDS RECALL:	0.929
+=== TOTAL TEST WORDS PRECISION:	0.923
+=== F MEASURE:	0.926
+=== OOV Rate:	1.000
+=== OOV Recall Rate:	0.929
+=== IV Recall Rate:	--
+}}}
+
+=== 微软语料测试 ==
+{{{
+Time: 2285ms
+=== SUMMARY:
+=== TOTAL INSERTIONS:	8515
+=== TOTAL DELETIONS:	3048
+=== TOTAL SUBSTITUTIONS:	10603
+=== TOTAL NCHANGE:	22166
+=== TOTAL TRUE WORD COUNT:	106873
+=== TOTAL TEST WORD COUNT:	112340
+=== TOTAL TRUE WORDS RECALL:	0.872
+=== TOTAL TEST WORDS PRECISION:	0.830
+=== F MEASURE:	0.851
+=== OOV Rate:	1.000
+=== OOV Recall Rate:	0.872
+=== IV Recall Rate:	--
+}}}
