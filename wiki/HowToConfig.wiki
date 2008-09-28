@@ -1,0 +1,67 @@
+#summary CNLexizer配置简介
+
+= 符号说明 =
+
+只有以#开头的行为注释行。可以使用$符号进行变量引用(可以使用\逃逸)。每一行配置为一个Key-Value对，用等号分割。
+
+
+= 说明 =
+
+== processor_root ==
+
+处理器模块存放目录。
+
+== process_chain ==
+
+处理链定义。
+
+常用配置有:
+  * UNIGRAM分词: process_chain = ascii, unigram, single_combine
+  * CRF分词: process_chain = ascii, crf, single_combine
+  * CRF2分词: process_chain = prepare, crf2, single_combine
+
+== lexicon_unigram == 
+Unigram 辞典路径
+
+== lexicon_combine == 
+user_combine 辞典路径
+
+== number_trailing ==
+
+number_trailing 辞典路径
+
+== max_token_length ==
+
+Unigram 扫描最长词的长度
+
+== ele_estimate ==
+
+Unigram分词的ELE平滑系数
+
+= 例子 =
+
+{{{
+root = /opt/cnlexizer
+processor_root = $root/processor
+
+# For Unigram Model
+#process_chain = ascii, unigram, single_combine
+
+# For CRF Model
+#process_chain = ascii, crf, single_combine
+
+# For CRF2 Model
+process_chain = prepare, crf2, single_combine
+
+crf_model = $root/index/crf.model
+crf2_model =$root/index/crf2.model
+
+lexicon_unigram = $root/index/unigram.idx
+lexicon_combine = $root/index/user_combine.idx
+lexicon_number_trailing = $root/index/number-trailing.idx
+
+ele_lambda = 0.5
+
+max_token_length = 8
+
+}}}
