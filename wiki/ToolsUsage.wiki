@@ -1,43 +1,51 @@
-#summary 工具的使用
+﻿#summary 工具的使用
 #labels Phase-Implementation,Featured
 
-= bin/ngm_tool =
+= ngm_tool =
 
-用来制作NGram原始数据的工具.
+== 功能 ==
 
-从语料库中抽取UniGram
+从语料库中提取出NGram
+
+== 示例 ==
+
+=== 提取Unigram ===
 {{{
-ngm_tool -u 语料库 > unigram.txt
+ngm_tool -N 1 -v  语料库 > unigram.txt
 }}}
 
-= bin/cf_tool =
-
-用于测试lua配置文件是否能被正确读取
+=== 提取Bigram ===
 {{{
-cf_tool -c 配置文件 -k 变量名 -t 类型
+ngm_tool -N 1 -v  语料库 > unigram.txt
 }}}
-这里_类型_默认是string, 可选类型有string和int
 
-= bin/lexicon_cli =
+= lexicon =
+
+== 功能 ==
 
 辞典索引制作工具
 
-建立新索引
+== 示例 ==
+
+=== 建立新索引 ===
+
 {{{
-lexicon_cli -b -i lexicon.idx -s 辞典.txt
+lexicon -b -i lexicon.idx -s 辞典.txt
 }}}
 
-Dump索引里所有的辞
+=== 显示索引里所有的辞 ===
+
 {{{
 lexicon_cli -d -i lexicon.idx
 }}}
 
-查询索引里的一个辞
+=== 查询索引 ===
+
 {{{
 lexicon_cli -q 单词 -i lexicon.idx
 }}}
 
-显示索引信息
+=== 显示索引统计信息 ===
 {{{
 lexicon_cli -n -i lexicon.idx
 }}}

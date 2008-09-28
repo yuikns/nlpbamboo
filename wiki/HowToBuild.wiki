@@ -1,4 +1,4 @@
-#summary 如何编译和运行
+﻿#summary 如何编译和运行
 #labels Phase-Deploy,Featured,Phase-Implementation
 
 = 编译 =
@@ -9,9 +9,6 @@
      * Ubuntu & Debian 系统使用: apt-get install cmake
      * archlinux系统: 使用pacman -S cmake
      * 其他Linux/Unix系统，请去CMake官方下载源代码编译。地址是:http://www.cmake.org
-  # 安装lua开发环境
-    * ubuntu & debian系统: apt-get install liblua5.1-0-dev
-    * archlinux系统: 使用pacman -S lua
   # 安装CRF++
     * 请参考 http://crfpp.sourceforge.net
   # 使用CMake Build系统
@@ -19,34 +16,25 @@
 cd cnlexizer
 mkdir build
 cd build
-cmake ..
-make
+cmake .. -DCMAKE_BUILD_TYPE=release
+make all
 }}}
-  # 在指定目录里安装系统
+  # 安装cnlexizer到/opt/cnlexizer
 {{{
-make DESTDIR=/path/to/your/place install
+make install
 }}} 
 
 = 制作训练集 =
 
 {{{
-cd /path/to/your/place
-mkdir data_raw
-# 下载人民日报1998年语料库
-wget "http://cnlexizer.googlecode.com/files/people-daily.txt.gz"
-gzip -d people-daily.txt.gz
-cd ..
-# 建立辞典
+# 建立辞典和训练集
 bin/auto_build
 }}}
 
-= 更新配置文件 =
-
-编辑/path/to/your/place/etc/cnlexizer.cfg, 将root变量修改为/path/to/your/place
 
 = 运行命令工具 =
 
 {{{
-cd /path/to/your/place
-bin/cnlexizer_cli -c etc/cnlexizer.cfg
+cd /opt/cnlexizer
+bin/cnlexizer
 }}}

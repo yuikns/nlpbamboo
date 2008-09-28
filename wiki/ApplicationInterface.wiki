@@ -2,6 +2,8 @@
 #labels Featured,Phase-Implementation
 = C 语言 =
 
+动态库: libcnlexizer.so
+
 == 初始化 ==
 
 {{{
@@ -12,7 +14,7 @@ void * cnlexizer_init(const char *cfg);
 
 === 参数 ===
 
-  * *cfg*: cnlexizer配置文件的路径。
+  * *cfg*: cnlexizer配置文件的路径。如果cfg = NULL，会按照./cnlexizer.cfg, ./etc/cnlexizer.cfg, /opt/etc/cnlexizer.cfg, /etc/cnlexizer.cfg的循序查找并加载第一个找到的配置文件。
 
 === 返回值 ===
 
