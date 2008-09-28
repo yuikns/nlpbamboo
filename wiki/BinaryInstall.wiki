@@ -3,7 +3,7 @@
 
 = 下载 =
 
-根据你的系统下载编译好的[ http://cnlexizer.googlecode.com/files/cnlexizer-1.0beta1-i686.tar.bz2 二进制包]。
+根据你的系统下载编译好的[http://cnlexizer.googlecode.com/files/cnlexizer-1.0beta1-i686.tar.bz2 二进制包]。
 
 = 解压缩 =
 
