@@ -1,24 +1,60 @@
 ﻿#summary 编译TSearch2扩展
 #labels Phase-Deploy,Featured,Phase-Implementation
 
-= 编译 =
+= PostgreSQL 分词函数 =
+
+PostgreSQL分词函数需要安装好CNLexizer的系统以及CNLexizer源代码。安装CNLexizer请参考HowToBuild
+
+== 编译和安装 ==
 
 {{{
-$ cd exts/postgresql/chinese_parser
+$ cd cnlexizer/exts/postgresql/cnlexizer
+$ make
+$ sudo make install
+}}}
+
+== 创建分词函数 ==
+{{{
+$ psql
+postgres=# \i /usr/local/pgsql/share/contrib/pg_cnlexizer.sql
+}}}
+
+== 确保配置文件正确 ==
+
+请确保/etc/cnlexizer.cfg或者/opt/etc/cnlexizer.cfg存在并正确配置。
+
+== 测试 ==
+
+{{{
+postgres=# select cnlexizer('中文分词');
+ cnlexizer  
+------------
+ 中文 分词 
+(1 row)
+}}}
+
+= Tsearch2 分词模块 =
+
+Tsearch2分词模块需要安装好CNLexizer的系统以及CNLexizer源代码。安装CNLexizer请参考HowToBuild
+
+== 编译和安装 ==
+
+{{{
+$ cd cnlexizer/exts/postgresql/chinese_parser
 $ make
 $ make install
 }}}
 
-= 安装 =
+== 创建分词模块 ==
 {{{
 $ psql
-jianingy=# \i /path/to/your/contrib/chinese_parser.sql
+postgres=# \i /usr/local/pgsql/share/contrib/chinese_parser.sql
 }}}
 
-= 测试 =
+== 测试 ==
 {{{
 $ psql
-jianingy=# SELECT to_tsvector('chinesecfg', '我爱北京');
+postgres=# SELECT to_tsvector('chinesecfg', '我爱北京');
       to_tsvector       
 ------------------------
  '我':1 '爱':2 '北京':3
