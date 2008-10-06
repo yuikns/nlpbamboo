@@ -38,6 +38,9 @@ Unigram 扫描最长词的长度
 
 Unigram分词的ELE平滑系数
 
+== combine_double_same_character ==
+当该值为1时，组合双字的词，例如“说说”，“看看”，“试试”，等等
+
 = 例子 =
 
 {{{
