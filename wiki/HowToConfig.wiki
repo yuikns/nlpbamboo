@@ -20,26 +20,46 @@
   * CRF分词: process_chain = ascii, crf, single_combine
   * CRF2分词: process_chain = prepare, crf2, single_combine
 
+== crf_model ==
+*crf模块参数*
+crf的模型文件
+
+== crf2_model ==
+*crf2模块参数*
+crf2的模型文件
+
 == lexicon_unigram == 
+*unigram模块参数*
 Unigram 辞典路径
 
+
 == lexicon_combine == 
+*single_combine模块参数*
 user_combine 辞典路径
 
 == number_trailing ==
 
+*single_combine模块参数*
 number_trailing 辞典路径
 
 == max_token_length ==
 
-Unigram 扫描最长词的长度
+扫描最长词的长度
 
 == ele_estimate ==
 
+*Unigram 模块参数*
 Unigram分词的ELE平滑系数
 
 == combine_double_same_character ==
+
+*single_combine模块参数*
 当该值为1时，组合双字的词，例如“说说”，“看看”，“试试”，等等
+
+== prepare_characterize ==
+
+*prepare模块参数*
+当该值为1时，对中文进行单字切分。(给CRF2提供输入用)。
 
 = 例子 =
 
