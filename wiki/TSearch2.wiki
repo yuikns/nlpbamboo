@@ -1,7 +1,7 @@
-﻿#summary 编译TSearch2扩展
+﻿#summary 编译和安装PostgreSQL扩展和TSearch2扩展
 #labels Phase-Deploy,Featured,Phase-Implementation
 
-= PostgreSQL 分词函数 =
+= PostgreSQL 分词函数(不需要TSearch2支持) =
 
 PostgreSQL分词函数需要安装好Bamboo的系统(不需要Bamboo源代码)。
 如果您的系统中没有安装Bamboo，请参考：

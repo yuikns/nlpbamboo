@@ -3,7 +3,7 @@
 
 = 编译 =
 
-  # 从google code的subversion下载bamboo源代码。请参考http://code.google.com/p/bamboo/source/checkout
+  # 从google code的subversion下载bamboo源代码。请参考http://code.google.com/p/nlpbamboo/source/checkout
   # 安装CMake编译环境
      * Slackware 默认自带CMake
      * Ubuntu & Debian 系统使用: apt-get install cmake

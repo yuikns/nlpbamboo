@@ -36,16 +36,16 @@ lexicon -b -i lexicon.idx -s 辞典.txt
 === 显示索引里所有的辞 ===
 
 {{{
-lexicon_cli -d -i lexicon.idx
+lexicon -d -i lexicon.idx
 }}}
 
 === 查询索引 ===
 
 {{{
-lexicon_cli -q 单词 -i lexicon.idx
+lexicon -q 单词 -i lexicon.idx
 }}}
 
 === 显示索引统计信息 ===
 {{{
-lexicon_cli -n -i lexicon.idx
+lexicon -n -i lexicon.idx
 }}}

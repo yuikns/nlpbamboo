@@ -1,5 +1,8 @@
-#summary ChangeLog
+﻿#summary ChangeLog
 #labels Featured
+
+2008-10-08
+  * 项目从CNLexizer更名为Bamboo
 
 2008-09-28
   * 使用自制的山寨版simple_config代替lua进行配置，今后bamboo将不再依赖于liublua了。
