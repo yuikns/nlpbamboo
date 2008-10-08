@@ -1,4 +1,4 @@
-#summary 测试数据
+﻿#summary 分词测试结果
 #labels Featured
 
 = 人民日报98年一月语料库 =
