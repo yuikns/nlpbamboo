@@ -3,7 +3,7 @@
 
 = 编译 =
 
-  # 从google code的subversion下载cnlexizer源代码。请参考http://code.google.com/p/cnlexizer/source/checkout
+  # 从google code的subversion下载bamboo源代码。请参考http://code.google.com/p/bamboo/source/checkout
   # 安装CMake编译环境
      * Slackware 默认自带CMake
      * Ubuntu & Debian 系统使用: apt-get install cmake
@@ -13,13 +13,13 @@
     * 请参考 http://crfpp.sourceforge.net
   # 使用CMake Build系统
 {{{
-cd cnlexizer
+cd bamboo
 mkdir build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=release
 make all
 }}}
-  # 安装cnlexizer到/opt/cnlexizer
+  # 安装bamboo到/opt/bamboo
 {{{
 make install
 }}} 
@@ -35,6 +35,6 @@ bin/auto_build
 = 运行命令工具 =
 
 {{{
-cd /opt/cnlexizer
-bin/cnlexizer
+cd /opt/bamboo
+bin/bamboo
 }}}

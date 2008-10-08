@@ -2,7 +2,7 @@
 #labels Featured
 
 2008-09-28
-  * 使用自制的山寨版simple_config代替lua进行配置，今后cnlexizer将不再依赖于liublua了。
+  * 使用自制的山寨版simple_config代替lua进行配置，今后bamboo将不再依赖于liublua了。
   * 对代码进行了大量的优化，速度提高5倍之多。
   * 新版本的auto_build程序，不再需要用户自己下载语料库。该程序会自动链接code.google.com下载。
   * 在auto_build中加入了CRF模型训练的代码

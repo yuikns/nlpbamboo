@@ -2,35 +2,35 @@
 #labels Featured,Phase-Implementation
 = C 语言 =
 
-动态库: libcnlexizer.so
+动态库: libbamboo.so
 
 == 初始化 ==
 
 {{{
-void * cnlexizer_init(const char *cfg);
+void * bamboo_init(const char *cfg);
 }}}
 
-初始化cnlexizer。读入字典、加载各类处理模块。
+初始化bamboo。读入字典、加载各类处理模块。
 
 === 参数 ===
 
-  * *cfg*: cnlexizer配置文件的路径。如果cfg = NULL，会按照./cnlexizer.cfg, ./etc/cnlexizer.cfg, /opt/etc/cnlexizer.cfg, /etc/cnlexizer.cfg的循序查找并加载第一个找到的配置文件。
+  * *cfg*: bamboo配置文件的路径。如果cfg = NULL，会按照./bamboo.cfg, ./etc/bamboo.cfg, /opt/etc/bamboo.cfg, /etc/bamboo.cfg的循序查找并加载第一个找到的配置文件。
 
 === 返回值 ===
 
-如果初始化正确则返回cnlexizer的句柄，否则返回NULL.
+如果初始化正确则返回bamboo的句柄，否则返回NULL.
 
 == 分词 ==
 
 {{{
-size_t cnlexizer_process(void *handle, char *t, const char *s);
+size_t bamboo_parse(void *handle, char *t, const char *s);
 }}}
 
 进行分词
 
 === 参数 ===
 
-  * *handle*: 由cnlexizer_init初始化好的句柄
+  * *handle*: 由bamboo_init初始化好的句柄
   * *t*: 分词结果的字符串指针，空间由调用者分配
   * *s*: 待分词句子的字符串指针
 
@@ -40,10 +40,10 @@ size_t cnlexizer_process(void *handle, char *t, const char *s);
 == 清理 ==
 
 {{{
-void cnlexizer_clean(void *handle);
+void bamboo_clean(void *handle);
 }}}
 
-销毁cnlexizer。从内存中卸载字典。
+销毁bamboo。从内存中卸载字典。
 
 === 参数 ===
-  * *handle*: 由cnlexizer_init初始化好的句柄
+  * *handle*: 由bamboo_init初始化好的句柄

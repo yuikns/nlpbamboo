@@ -1,9 +1,9 @@
-#summary 安装CNLexizer二进制包
+#summary 安装Bamboo二进制包
 #labels Featured
 
 = 下载 =
 
-根据你的系统下载编译好的[http://cnlexizer.googlecode.com/files/cnlexizer-1.0beta1-i686.tar.bz2 二进制包]。
+根据你的系统下载编译好的[http://bamboo.googlecode.com/files/bamboo-1.0beta1-i686.tar.bz2 二进制包]。
 
 = 解压缩 =
 
@@ -12,7 +12,7 @@ sudo tar -jxvf tarball.tar.bz2 -C /
 = 生成辞典和训练集 =
 
 {{{
-cd /opt/cnlexizer
+cd /opt/bamboo
 bin/auto_build
 }}}
 
@@ -24,6 +24,6 @@ NOTE: 由于CRF训练时间较长，训练脚本会提示您是否训练CRF模�
 
 = 测试 =
 {{{
-cd /opt/cnlexizer
+cd /opt/bamboo
 bin/lexizer
 }}}

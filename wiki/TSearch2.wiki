@@ -3,15 +3,15 @@
 
 = PostgreSQL 分词函数 =
 
-PostgreSQL分词函数需要安装好CNLexizer的系统(不需要CNLexizer源代码)。
-如果您的系统中没有安装CNLexizer，请参考：
-  * 从源代码安装CNLexizer：HowToBuild
-  * CNLexizer 二进制包安装方法：BinaryInstall
+PostgreSQL分词函数需要安装好Bamboo的系统(不需要Bamboo源代码)。
+如果您的系统中没有安装Bamboo，请参考：
+  * 从源代码安装Bamboo：HowToBuild
+  * Bamboo 二进制包安装方法：BinaryInstall
 
 == 编译和安装 ==
 
 {{{
-$ cd /opt/cnlexizer/exts/postgresql/cnlexizer
+$ cd /opt/bamboo/exts/postgresql/bamboo
 $ make
 $ sudo make install
 }}}
@@ -19,18 +19,18 @@ $ sudo make install
 == 创建分词函数 ==
 {{{
 $ psql
-postgres=# \i /usr/local/pgsql/share/contrib/pg_cnlexizer.sql
+postgres=# \i /usr/local/pgsql/share/contrib/pg_bamboo.sql
 }}}
 
 == 确保配置文件正确 ==
 
-请确保/etc/cnlexizer.cfg或者/opt/etc/cnlexizer.cfg存在并正确配置。
+请确保/etc/bamboo.cfg或者/opt/etc/bamboo.cfg存在并正确配置。
 
 == 测试 ==
 
 {{{
-postgres=# select cnlexizer('中文分词');
- cnlexizer  
+postgres=# select bamboo('中文分词');
+ bamboo  
 ------------
  中文 分词 
 (1 row)
@@ -38,12 +38,12 @@ postgres=# select cnlexizer('中文分词');
 
 = Tsearch2 分词模块 =
 
-Tsearch2分词模块需要安装好CNLexizer的系统以及CNLexizer源代码。安装CNLexizer请参考HowToBuild
+Tsearch2分词模块需要安装好Bamboo的系统以及Bamboo源代码。安装Bamboo请参考HowToBuild
 
 == 编译和安装 ==
 
 {{{
-$ cd /opt/cnlexizer/exts/postgresql/chinese_parser
+$ cd /opt/bamboo/exts/postgresql/chinese_parser
 $ make
 $ make install
 }}}

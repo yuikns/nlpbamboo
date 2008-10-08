@@ -1,4 +1,4 @@
-#summary CNLexizer配置简介
+#summary Bamboo配置简介
 
 = 符号说明 =
 
@@ -64,7 +64,7 @@ Unigram分词的ELE平滑系数
 = 例子 =
 
 {{{
-root = /opt/cnlexizer
+root = /opt/bamboo
 processor_root = $root/processor
 
 # For Unigram Model
