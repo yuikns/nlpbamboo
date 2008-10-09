@@ -1,0 +1,29 @@
+#summary 各种修正方法对比
+#labels Document-Bench
+
+== 符号 ==
+
+  * CRF2：CRF二代模型
+  * MF：最大正向组合(maxforward_processor)
+  * FC：单字和前项组合(single_combine, combine_forward=1)
+  * BC：单字和后项组合(single_combine, combine_backward=1)
+  * NC：单字和相邻单字组合(single_combine, combine_neighbor=1)
+
+
+== 北京大学语料 ==
+
+|| 模型 || 准确率 || 时间(ms) ||
+|| CRF2 ||  94.1% || 2937 ||
+|| CRF2+MF ||  95.1% || 2979 ||
+|| CRF2+MF+FC || 95.0% || 3004 ||
+|| CRF2+MF+FC+BC ||  94.9% || 3076 ||
+|| CRF2+MF+FC+BC+NC ||   94.9% || 3096 ||
+|| CRF2+MF+NC ||  95.1% || 3055 ||
+
+== MSRA 语料库 ==
+|| 模型 || 准确率 || 时间(ms) ||
+|| CRF2 || 84.7% || 3144 || 
+|| CRF2+MF ||  86.7% || 3190 || 
+|| CRF2+MF+FC ||  86.7% || 3220 || 
+|| CRF2+MF+FC+BC ||  86.9% || 3251 || 
+|| CRF2+MF+FC+BC+NC ||  86.9% || 3219 || 
