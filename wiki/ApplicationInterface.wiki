@@ -47,3 +47,26 @@ void bamboo_clean(void *handle);
 
 === 参数 ===
   * *handle*: 由bamboo_init初始化好的句柄
+
+== 设置 ==
+
+{{{
+void bamboo_set(const char *s)
+}}}
+
+设置bamboo行为
+
+=== 参数 ===
+  * *s*: 与bamboo.cfg语法相同的字符串
+
+*注意*: _直到使用bamboo_reload之前，设置不会生效_
+
+== 加载设置 ==
+
+{{{
+void bamboo_reload()
+}}}
+
+加载经过bamboo_set更新的设置
+
+
