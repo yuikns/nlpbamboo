@@ -1,0 +1,18 @@
+#summary PHP扩展的安装
+
+*请确认系统已经安装php开发包*
+
+{{{
+cd /opt/bamboo/exts/php
+sudo phpize
+sudo make
+sudo make install
+}}}
+
+在php.ini文件中加入
+{{{
+extension=bamboo.so
+bamboo.configuration=/opt/bamboo/etc/bamboo.cfg
+}}}
+
+*注意*: _如果bamboo.configuration为空，那么系统会按照默认路径寻找bamboo.cfg_
