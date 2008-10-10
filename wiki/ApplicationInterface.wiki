@@ -76,3 +76,45 @@ void bamboo_reload()
 }}}
 
 加载经过bamboo_set更新的设置
+
+
+= PHP 语言 =
+
+== 分词 ==
+
+{{{
+size_t bamboo_parse(s);
+}}}
+
+进行分词
+
+=== 参数 ===
+  * *s*: 待分词句子的字符串指针
+
+=== 返回值 ===
+如果分词正确则返回切分好的字符串，否则返回false
+
+----
+
+== 设置 ==
+
+{{{
+bamboo_set(s)
+}}}
+
+设置bamboo行为
+
+=== 参数 ===
+  * *s*: 与bamboo.cfg语法相同的字符串
+
+*注意*: _直到使用bamboo_reload之前，设置不会生效_
+
+----
+
+== 加载设置 ==
+
+{{{
+bamboo_reload()
+}}}
+
+加载经过bamboo_set更新的设置
