@@ -25,3 +25,7 @@ bamboo.configuration=/opt/bamboo/etc/bamboo.cfg
 cd /opt/bamboo/exts/php
 php sample.php
 }}}
+
+=PHP API=
+
+请参考[ApplicationInterface]里的PHP部分
