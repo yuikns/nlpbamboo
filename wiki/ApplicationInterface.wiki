@@ -20,6 +20,8 @@ void * bamboo_init(const char *cfg);
 
 如果初始化正确则返回bamboo的句柄，否则返回NULL.
 
+----
+
 == 分词 ==
 
 {{{
@@ -37,6 +39,8 @@ size_t bamboo_parse(void *handle, char *t, const char *s);
 === 返回值 ===
 如果分词正确则返回t的长度，否则返回-1
 
+----
+
 == 清理 ==
 
 {{{
@@ -47,6 +51,8 @@ void bamboo_clean(void *handle);
 
 === 参数 ===
   * *handle*: 由bamboo_init初始化好的句柄
+
+----
 
 == 设置 ==
 
@@ -61,6 +67,8 @@ void bamboo_set(const char *s)
 
 *注意*: _直到使用bamboo_reload之前，设置不会生效_
 
+----
+
 == 加载设置 ==
 
 {{{
@@ -68,5 +76,3 @@ void bamboo_reload()
 }}}
 
 加载经过bamboo_set更新的设置
-
-
