@@ -25,7 +25,7 @@ void * bamboo_init(const char *cfg);
 == 分词 ==
 
 {{{
-size_t bamboo_parse(void *handle, char *t, const char *s);
+size_t bamboo_parse(void *handle, const char **t, const char *s);
 }}}
 
 进行分词
@@ -33,7 +33,7 @@ size_t bamboo_parse(void *handle, char *t, const char *s);
 === 参数 ===
 
   * *handle*: 由bamboo_init初始化好的句柄
-  * *t*: 分词结果的字符串指针，空间由调用者分配
+  * *t*: 分词结果的字符串指针，该指针指向一个由bamboo分配好的空间。调用者需要在函数返回后立即拷贝这个空间中的内容
   * *s*: 待分词句子的字符串指针
 
 === 返回值 ===
