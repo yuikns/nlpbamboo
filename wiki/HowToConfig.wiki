@@ -1,11 +1,16 @@
-#summary Bamboo配置简介
+﻿#summary Bamboo配置简介
 
 = 符号说明 =
 
 只有以#开头的行为注释行。可以使用$符号进行变量引用(可以使用\逃逸)。每一行配置为一个Key-Value对，用等号分割。
 
 
-= 说明 =
+= 配置文件示例 =
+
+请参考[ConfigurationSample]
+
+
+= 配置项详细说明 =
 
 == processor_root ==
 
