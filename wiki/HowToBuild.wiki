@@ -34,7 +34,7 @@ bin/auto_build
 
 = 更新配置文件 =
 
-请参考配置文件示例 [ConfigurationSample]
+请参考配置文件示例 [ConfigurationSample]， 细节内容请参考[HowToConfig]。
 
 = 运行命令工具 =
 
