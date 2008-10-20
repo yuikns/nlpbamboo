@@ -1,0 +1,16 @@
+#summary 如何训练crf2模型
+
+= 生成语料 =
+
+{{{
+wget -O - http://nlpbamboo.googlecode.com/files/people-daily.txt.gz | gzip -cd > people-daily.txt
+$bin/pdc_normalize -v people-daily.txt > normalized.txt
+$bin/crf2_tool -i normalized.txt -o pd_crf2_training.txt
+}}}
+
+
+= 训练 =
+
+{{{
+crf_learn -t -c 4.0 -f 2 $training/crf2.tmpl pd_crf2_training.txt crf2.model
+}}}
