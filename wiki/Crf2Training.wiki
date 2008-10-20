@@ -3,14 +3,17 @@
 = 生成语料 =
 
 {{{
-wget -O - http://nlpbamboo.googlecode.com/files/people-daily.txt.gz | gzip -cd > people-daily.txt
-$bin/pdc_normalize -v people-daily.txt > normalized.txt
-$bin/crf2_tool -i normalized.txt -o pd_crf2_training.txt
+top=.
+source $top/etc/build_settings
+
+wget -O - $corpus_url | gzip -cd > $corpus
+$bin/pdc_normalize -v $corpus > ${build_dir}/normalized.txt
+$bin/crf2_tool -i ${build_dir}/normalized.txt -o ${build_dir}/pd_crf2_training.txt
 }}}
 
 
 = 训练 =
 
 {{{
-crf_learn -t -c 4.0 -f 2 $training/crf2.tmpl pd_crf2_training.txt crf2.model
+crf_learn -t -c 4.0 -f 2 $data_dir/crf2.tmpl ${build_dir}/pd_crf2_training.txt $index_dir/crf2.model
 }}}
