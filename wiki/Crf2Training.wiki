@@ -3,7 +3,7 @@
 = 生成语料 =
 
 {{{
-top=.
+ top=.
 source $top/etc/build_settings
 
 wget -O - $corpus_url | gzip -cd > $corpus
