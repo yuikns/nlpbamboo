@@ -1,0 +1,1 @@
+install(FILES bamboo.cfg DESTINATION ${ETC_INSTALL_DIR})
