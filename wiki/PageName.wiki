@@ -32,7 +32,7 @@ void bamboo_parser.set(std::string key, std::string val)
 size_t bamboo_parser.parse(std::vector<Token> &vec, const char *s);
 }}}
 === 参数 ===
-* std::vector<Token> &vec：分词或者实体词识别的结果
+* std::vector &vec：分词或者实体词识别的结果
 * const char *s：需要处理的字符串
 === 返回值 ===
 * size_t : 结果词数量
