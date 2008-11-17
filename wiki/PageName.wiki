@@ -19,13 +19,13 @@ void bamboo_parser.set(std::string s)
 void bamboo_parser.set(std::string key, std::string val)
 }}}
 
-* 设置bamboo处理流程，例如：
+== 设置bamboo处理流程，例如：==
 
-bamboo_parser.set("process_chain=prepare, crf_seg, single_combine") --- 自定义处理链
+  bamboo_parser.set("process_chain=prepare, crf_seg, single_combine") --- 自定义处理链
 
-bamboo_parser.set("process_chain","$crf_sgmt_chain") --- 分词流程
+  bamboo_parser.set("process_chain","$crf_sgmt_chain") --- 分词流程
 
-bamboo_parser.set("process_chain","$crf_ns_chain") --- 地名识别流程
+  bamboo_parser.set("process_chain","$crf_ns_chain") --- 地名识别流程
 
   * *注意*: 直到使用bamboo_parser.reload之前，设置不会生效
 
