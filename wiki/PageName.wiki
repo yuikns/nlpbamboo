@@ -27,15 +27,15 @@ bamboo_parser.set("process_chain","$crf_sgmt_chain") --- 分词流程
 
 bamboo_parser.set("process_chain","$crf_ns_chain") --- 地名识别流程
 
-*注意*: 直到使用bamboo_parser.reload之前，设置不会生效
+* *注意*: 直到使用bamboo_parser.reload之前，设置不会生效
 
 == 使用Parser对象进行分词，实体词识别 ==
 {{{
 size_t bamboo_parser.parse(std::vector<Token> &vec, const char *s);
 }}}
 === 参数 ===
-* *vec*：分词或者实体词识别的结果
+* *vec* ：分词或者实体词识别的结果
 
-* *s*：需要处理的字符串
+* *s* ：需要处理的字符串
 === 返回值 ===
 * *size_t* : 结果词数量
