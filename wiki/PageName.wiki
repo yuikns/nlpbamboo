@@ -9,7 +9,7 @@ bamboo::Parser bamboo_parser("const char *cfg");
 }}}
 初始化bamboo，根据cfg配置文件中的参数设置，加载字典以及各类处理模块
 === 参数 ===
-const char *cfg: bamboo配置文件的路径。如果cfg = NULL，会按照./bamboo.cfg, ./etc/bamboo.cfg, /opt/etc/bamboo.cfg, /etc/bamboo.cfg的循序查找并加载第一个找到的配置文件。
+const char * cfg: bamboo配置文件的路径。如果cfg = NULL，会按照./bamboo.cfg, ./etc/bamboo.cfg, /opt/etc/bamboo.cfg, /etc/bamboo.cfg的循序查找并加载第一个找到的配置文件。
 === 返回值 ===
 无
 == Parser参数设置 ==
@@ -34,8 +34,8 @@ bamboo_parser.set("process_chain","$crf_ns_chain") --- 地名识别流程
 size_t bamboo_parser.parse(std::vector<Token> &vec, const char *s);
 }}}
 === 参数 ===
-std::vector<Token> &vec：分词或者实体词识别的结果
+std::vector<Token> vec：分词或者实体词识别的结果
 
-const char *s：需要处理的字符串
+const char * s：需要处理的字符串
 === 返回值 ===
 size_t : 结果词数量
