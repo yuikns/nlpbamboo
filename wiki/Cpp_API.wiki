@@ -39,4 +39,4 @@ size_t bamboo_parser.parse(std::vector<Token> &vec, const char *s);
   * *s* ：需要处理的字符串
 === 返回值 ===
   * *size_t* : 结果词数量
-  * *Token* : Token中包含char* token和int pos
+  * *Token* : Token中包含char *token 和 int pos
