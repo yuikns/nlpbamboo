@@ -5,7 +5,7 @@
 /opt/bamboo/lib/libbamboo.so
 == Parser初始化 ==
 {{{
-bamboo::Parser bamboo_parser("const char *cfg");
+bamboo::Parser("const char *cfg");
 }}}
 初始化bamboo，根据cfg配置文件中的参数设置，加载字典以及各类处理模块
 === 参数 ===
@@ -15,23 +15,23 @@ bamboo::Parser bamboo_parser("const char *cfg");
 == Parser参数设置 ==
 
 {{{
-void bamboo_parser.set(std::string s)
-void bamboo_parser.set(std::string key, std::string val)
+void Parser.set(std::string s)
+void Parser.set(std::string key, std::string val)
 }}}
 
 == 设置bamboo处理流程，例如：==
 
-  bamboo_parser.set("process_chain=prepare, crf_seg, single_combine") --- 自定义处理链
+  Parser.set("process_chain=prepare, crf_seg, single_combine") --- 自定义处理链
 
-  bamboo_parser.set("process_chain","$crf_sgmt_chain") --- 分词流程
+  Parser.set("process_chain","$crf_sgmt_chain") --- 分词流程
 
-  bamboo_parser.set("process_chain","$crf_ns_chain") --- 地名识别流程
+  Parser.set("process_chain","$crf_ns_chain") --- 地名识别流程
 
   * *注意*: 直到使用bamboo_parser.reload之前，设置不会生效
 
 == 使用Parser对象进行分词，实体词识别 ==
 {{{
-size_t bamboo_parser.parse(std::vector<Token> &vec, const char *s);
+size_t Parser.parse(std::vector<Token> &vec, const char *s);
 }}}
 === 参数 ===
   * *vec* ：分词或者实体词识别的结果
