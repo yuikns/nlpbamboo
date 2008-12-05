@@ -1,6 +1,6 @@
 #summary Bamboo API for C/C++, PHP
 =Bamboo C++ API=
-==创建ParserFactory==
+==创建Parser Factory==
 {{{
 ParserFactory* ParserFactory::get_instance();
 }}}
