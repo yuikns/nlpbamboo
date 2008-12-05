@@ -1,4 +1,4 @@
-#summary Bamboo Samples
+#summary Bamboo Samples Show
 =分词Sample=
 {{{
 #include <iostream>
