@@ -1,4 +1,4 @@
-#summary Bamboo Tools
+#summary Bamboo Tools Usage
 
 == ngm_tool工具介绍==
 === 从语料库中提取出NGram ===
