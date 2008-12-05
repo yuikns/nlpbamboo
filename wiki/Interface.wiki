@@ -1,4 +1,4 @@
-#summary Bamboo API for c/c++, php
+#summary Bamboo API for C/C++, PHP
 =Bamboo C++ API=
 ==创建ParserFactory==
 {{{
