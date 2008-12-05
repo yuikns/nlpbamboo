@@ -1,4 +1,4 @@
-#Bamboo API for c/c++, php
+#summary Bamboo API for c/c++, php
 =Bamboo C++ API=
 ==创建ParserFactory==
 {{{
@@ -116,4 +116,3 @@ bamboo_parse(parser_name);
   * 参数：
     * parser_name: php.ini中注册的parser name
   * 返回值：Parser的Parse结果，各词之间用空格分开，词性会以“/”作为分隔符附加在分词后面
-
