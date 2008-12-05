@@ -61,7 +61,7 @@ make install
 {{{
 /opt/bamboo/bin/autobuild -t [train_type] -f [train_file.txt] -d [train_dir] -p [thread_number]
 }}}
-  # Bamboo训练参数：
+  # autobuild的训练参数：
     * -t 选项指定了训练的类型，即是分词、词性、实体词还是主题词的训练
     * -f 选项指定了训练语料的路径，缺省会自动下载98年人民日报1月份的文章作为语料
     * -d 选项指定了训练语料的目录，该目录下的.txt文本文件会被当做主题词抽取的语料
@@ -69,6 +69,9 @@ make install
   # autobuild的配置文件是/opt/bamboo/etc/build_settings，默认训练完成后，会在/opt/bamboo/下产生2个新目录：data/和index/
     * data目录中存放了文本格式的语料和字典文件
     * index目录中存放了二进制格式的训练model和字典trie树文件
+  # 除了缺省字典，Bamboo还为用户提供了自定义字典的工具lexicon，其具体方法请参考[http://code.google.com/p/nlpbamboo/wiki/Tools Bamboo Tools]，用户可以使用lexicon定制自己的user_combine和break辞典
+    * 次 贷 =>  次贷
+    * 雅虎口碑 => 雅虎 口碑 
 
 ==Bamboo测试==
   # Bamboo命令行接口：
