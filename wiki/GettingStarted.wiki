@@ -1,3 +1,4 @@
+#summary 下载，安装，运行第一个Bamboo程序
 ==Bamboo项目介绍==
   # Bamboo项目是一个基于机器学习技术的中文自然语言处理平台。
   # Bamboo项目的主要目标：
