@@ -111,7 +111,7 @@ bamboo_setopt("parser_name", bamboo_option, "arg");
   * 返回值：无
 ==Parse输入文本==
 {{{
-bamboo_parse(parser_name);
+bamboo_parse("parser_name");
 }}}
   * 参数：
     * parser_name: php.ini中注册的parser name
