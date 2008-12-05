@@ -68,7 +68,7 @@ make install
     * -f 选项指定了训练语料的路径，缺省会自动下载98年人民日报1月份的文章作为语料
     * -d 选项指定了训练语料的目录，该目录下的.txt文本文件会被当做主题词抽取的语料
     * -p 选项指定了CRF++训练的线程数量，推荐和cpu数量一致
-  # Bamboo的训练完成后，会在/opt/bamboo/下产生2个新目录：data/和index/
+  # autobuild的配置文件是/opt/bamboo/etc/build_settings，默认训练完成后，会在/opt/bamboo/下产生2个新目录：data/和index/
     * data目录中存放了文本格式的语料和字典文件
     * index目录中存放了二进制格式的训练model和字典trie树文件
 
