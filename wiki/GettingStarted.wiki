@@ -69,7 +69,7 @@ make install
   # autobuild的配置文件是/opt/bamboo/etc/build_settings，默认训练完成后，会在/opt/bamboo/下产生2个新目录：data/和index/
     * data目录中存放了文本格式的语料和字典文件
     * index目录中存放了二进制格式的训练model和字典trie树文件
-  # 除了缺省字典，Bamboo还为用户提供了自定义字典的工具lexicon，其具体方法请参考[http://code.google.com/p/nlpbamboo/wiki/Tools Bamboo Tools]，用户可以使用lexicon定制自己的user_combine和break辞典
+  # 除了缺省字典，Bamboo还为用户提供了自定义字典的工具lexicon，其具体方法请参考[http://code.google.com/p/nlpbamboo/wiki/Tools Bamboo Tools]，用户可以使用lexicon定制自己的user_combine和break辞典，其功能如下所示：
     * 次 贷 =>  次贷
     * 雅虎口碑 => 雅虎 口碑 
 
