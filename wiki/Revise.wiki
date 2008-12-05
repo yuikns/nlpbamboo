@@ -1,6 +1,6 @@
 #summary How to revise Segmentation In Bamboo
 ==Bamboo为什么要修正分词==
- # Bamboo的分词可以选择多种分词算法，CRF，Unigram等，不过任何一种分词都不能保证完全正确，因此需要在主分词模块完成后，进行后续修正。
+ * Bamboo的分词可以选择多种分词算法，CRF，Unigram等，不过任何一种分词都不能保证完全正确，因此需要在主分词模块完成后，进行后续修正。
 ==Bamboo修正分词的方法==
  # 将未分词的单字整合，user_combine
  # 将较长的分词结果打散，break
