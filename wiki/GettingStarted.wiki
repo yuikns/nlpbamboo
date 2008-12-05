@@ -49,7 +49,7 @@ make install
    * /usr/include/bamboo/ : C/C++的头文件
 ==Bamboo配置==
   # Bamboo安装完成后，其默认的配置文件都在/opt/bamboo/etc/目录下，每个Bamboo Parser都有自己的配置文件
-  # Bamboo配置文件中的参数含义可参见配置文件内部的参数注释，默认的配置参数可支持基本的应用场景，建议初次使用者保留参数不变;对于对程序内部流程相对了解的高级用户，可以根据需要对参数进行调整
+  # Bamboo配置方法可以参见Configure，建议初次使用者保留参数不变;对于对程序内部流程相对了解的高级用户，可以根据需要对参数进行调整
   # 在php.ini配置文件中添加如下2行：
     * extension = bamboo.so
     * bamboo.parsers = crf_seg,crf_pos，crf_ner_ns, keyword 
