@@ -35,8 +35,9 @@ const void* Parser::getopt(enum bamboo_option option);
 int Parser::parse(std::vector<Token *> &out);
 }}}
   * 参数：
-    * out：Parser parse出来的结果结合
+    * out：Parser parse出来的结果结合，out中的token指针在使用完后需要释放
   * 返回值：Parser parse出来结果的数量
+
 ==获取Parse出的分词==
 {{{
 const char* Token::get_orig_token();
@@ -63,7 +64,7 @@ void* bamboo_init(const char *parser, const char *cfg);
 }}}
   * 参数：
     * parser：Bamboo Parser的name，取值可以是ugm_seg,mfm_seg, crf_seg, crf_pos, crf_ner_nr, crf_ner_ns, crf_ner_nt, keyword
-    * cfg：Parser对应的配置文件名，缺省用/opt/bamboo/etc目录下的标准配置文件
+    * cfg：Parser对应的配置文件名，如果为null或者不指定，则缺省用/opt/bamboo/etc目录下的标准配置文件
   * 返回值：Bamboo Parser指针
 ==设置Bamboo Parser参数==
 {{{
