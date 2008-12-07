@@ -1,4 +1,5 @@
 #summary Bamboo Samples Show
+#labels Featured
 =分词Sample=
 {{{
 #include <iostream>
