@@ -1,11 +1,14 @@
 ﻿#summary ChangeLog
 #labels Featured
-
+2008-12-05
+    * Bamboo第一个正式版终于测试完成了，目前可以通过源码方式安装了。
+    * Bamboo的正式版本中包括中文分词，词性标注，命名实体识别和主题词抽取
+    * 具体信息可以参见Bamboo的[http://code.google.com/p/nlpbamboo/wiki/GettingStarted 入门手册]
 2008-10-27
     * bamboo现在有能力进行词性标注了。
     * Bamboo现在有能力进行命名实体的识别了，其中包括人名，地名和机构名。
     * Bamboo现在有能力识别各种英文标识符了，例如: UA-1234-5678, F-15,等等
-    * CRF2有专有的训练脚本了，您再也不用劳神去研究如果Build一个CRF2的模型了
+    * CRF有专有的训练脚本了，您再也不用劳神去研究如果Build一个CRF2的模型了
     * 我们努力让配置文件更加具有可读性和灵活性，虽然还有很多工作需要继续完成。
     * 很多让人头疼的Bug被修正了。 
     * 改变了PHP，PostgreSQL的扩展程序结构，现在他们可以运行得更快了。
