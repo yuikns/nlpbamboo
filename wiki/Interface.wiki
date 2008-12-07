@@ -1,4 +1,5 @@
 #summary Bamboo API for C/C++, PHP
+#labels Featured
 =Bamboo C++ API=
 ==创建Parser Factory==
 {{{
