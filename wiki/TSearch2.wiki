@@ -56,10 +56,9 @@ postgres=# \i /usr/local/pgsql/share/contrib/chinese_parser.sql
 
 == 测试 ==
 {{{
-$ psql
-postgres=# SELECT to_tsvector('chinesecfg', '我爱北京');
-      to_tsvector       
-------------------------
- '我':1 '爱':2 '北京':3
+postgres=# SELECT to_tsvector('chinesecfg', '我爱北京天安门');
+            to_tsvector            
+-----------------------------------
+ '我':1 '爱':2 '北京':3 '天安门':4
 (1 row)
 }}}
