@@ -9,6 +9,7 @@
   * prepare_processor中无法分离连续两个标点的问题被修正了(blame me!)
   * 修正了trie字典不能正确处理\r的问题。（感谢bingzheng的提醒）
   * perl的扩展被放到了unstable中。（我们的确需要一个了解xs的同学能帮帮我们） 
+  * 特别感谢ifengle同学重写了许多文档，更详细地描述了bamboo的许多细节
 
 2008-10-27
     * bamboo现在有能力进行词性标注了。
