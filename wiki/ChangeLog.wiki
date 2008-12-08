@@ -1,9 +1,15 @@
 ﻿#summary ChangeLog
 #labels Featured
-2008-12-05
-    * Bamboo第一个正式版终于测试完成了，目前可以通过源码方式安装了。
-    * Bamboo的正式版本中包括中文分词，词性标注，命名实体识别和主题词抽取
-    * 具体信息可以参见Bamboo的[http://code.google.com/p/nlpbamboo/wiki/GettingStarted 入门手册]
+2008-12-08
+  * 经过weibingzheng同学的不懈努力，bamboo现在可以很好的进行命名实体的识别了。这些实体包括：人名，地名和机构名称。在此感谢weibingzheng同学的辛勤工作。
+  * 同时bingzheng同学还给bamboo带来的关键词抽取模块kea
+  * 根据ifengle同学的建议，我重构了bamboo的C++接口。新的接口使用factory模式来创建用于各种用途的解释器。包括：crf_seg(crf分词), keyword(关键词提取), crf_ner_ns(crf地名提取),.....
+  * 根据ifengle同学的建议，我们一起规范了所有的配置文件和文件中配置项的命名。
+  * 为postgresql增加了关键词抽取的接口
+  * prepare_processor中无法分离连续两个标点的问题被修正了(blame me!)
+  * 修正了trie字典不能正确处理\r的问题。（感谢bingzheng的提醒）
+  * perl的扩展被放到了unstable中。（我们的确需要一个了解xs的同学能帮帮我们） 
+
 2008-10-27
     * bamboo现在有能力进行词性标注了。
     * Bamboo现在有能力进行命名实体的识别了，其中包括人名，地名和机构名。
