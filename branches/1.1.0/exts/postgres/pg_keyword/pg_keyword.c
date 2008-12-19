@@ -36,20 +36,20 @@
 
 PG_MODULE_MAGIC;
 
-PG_FUNCTION_INFO_V1(tokenize);
-Datum tokenize(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(keyword);
+Datum keyword(PG_FUNCTION_ARGS);
 
 static void *handle = NULL;
-static char module[] = "crf_seg";
+static char module[] = "keyword";
 
 void _PG_init(void);
 void _PG_fini(void);
 
 void _PG_init(void)
 {
-	if (handle == NULL) 
-		elog(ERROR, "can not init tokenize");
 	handle = bamboo_init(module, NULL);
+	if (handle == NULL)
+		elog(ERROR, "can not load bamboo for keyword extraction");
 }
 
 void _PG_fini(void)
@@ -58,7 +58,7 @@ void _PG_fini(void)
 		bamboo_clean(handle);
 }
 
-Datum tokenize(PG_FUNCTION_ARGS)
+Datum keyword(PG_FUNCTION_ARGS)
 {
 	text *in = PG_GETARG_TEXT_P(0);
 	char *s = NULL;
