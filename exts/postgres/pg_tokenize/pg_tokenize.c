@@ -47,15 +47,12 @@ void _PG_fini(void);
 
 void _PG_init(void)
 {
-	if (handle == NULL) 
-		elog(ERROR, "can not init tokenize");
 	handle = bamboo_init(module, NULL);
 }
 
 void _PG_fini(void)
 {
-	if (handle)
-		bamboo_clean(handle);
+	bamboo_clean(handle);
 }
 
 Datum tokenize(PG_FUNCTION_ARGS)

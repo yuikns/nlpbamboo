@@ -1,2 +1,0 @@
-set search_path = public;
-create or replace function keyword(text) returns text as '$libdir/pg_keyword', 'keyword' language c strict;
