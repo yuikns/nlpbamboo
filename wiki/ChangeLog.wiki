@@ -1,5 +1,9 @@
 ﻿#summary ChangeLog
 #labels Featured
+2008-12-19
+  * 分词配置文件中use_break, use_single_combine, use_maxforward_combine选项现在可以正常工作了
+  * 修正了一个因为缺少字典而导致PostgreSQL崩溃的Bug
+
 2008-12-08
   * 经过weibingzheng同学的不懈努力，bamboo现在可以很好的进行命名实体的识别了。这些实体包括：人名，地名和机构名称。在此感谢weibingzheng同学的辛勤工作。
   * 同时bingzheng同学还给bamboo带来的关键词抽取模块kea
