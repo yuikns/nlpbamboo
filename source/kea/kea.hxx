@@ -27,8 +27,6 @@ protected:
 	TfidfRanker * _tfidf_ranker;
 	int _top_n;
 	int _verbose;
-	double _title_score;
-	double _ner_score;
 	Algorithm _algo;
 
 public:

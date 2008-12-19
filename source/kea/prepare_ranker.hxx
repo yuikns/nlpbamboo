@@ -13,7 +13,6 @@ class PrepareRanker : public Ranker{
 protected:
 	TokenDict * _token_dict;
 	double _title_weight;
-	double _ner_weight;
 	double _firstocc_w;
 	double _firstocc_t;
 	double _numocc_w;
