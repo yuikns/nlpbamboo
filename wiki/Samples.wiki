@@ -35,7 +35,7 @@ int main()
 using namespace bamboo;
 int main()
 {
-        void *handle = bamboo_init("crf_seg","/opt/bamboo/etc/crf_pos.conf");
+        void *handle = bamboo_init("crf_pos","/opt/bamboo/etc/crf_pos.conf");
         char *t = NULL;
         const char * text = "我爱北京天安门";
         bamboo_setopt(handle, BAMBOO_OPTION_TEXT, const_cast<char *>(text));
