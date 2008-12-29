@@ -114,7 +114,7 @@ int main(int argc, char * argv[])
 {{{
 <?php
   bamboo_setopt("crf_ner_nr", BAMBOO_OPTION_TEXT, "姚明和刘翔");
-  echo bamboo_parse("crf_ner_ns")."\n";
+  echo bamboo_parse("crf_ner_nr")."\n";
   bamboo_setopt("crf_ner_ns", BAMBOO_OPTION_TEXT, "我爱北京天安门");
   echo bamboo_parse("crf_ner_ns")."\n";
   bamboo_setopt("crf_ner_nt", BAMBOO_OPTION_TEXT, "北京公安局破获重大案件");
