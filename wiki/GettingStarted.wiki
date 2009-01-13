@@ -17,6 +17,7 @@
     * Ubuntu & Debian 系统使用: apt-get install cmake
     * archlinux系统: 使用pacman -S cmake
     * 其他Linux/Unix系统，请去CMake官方下载源代码编译。地址是:http://www.cmake.org
+    * 注：cmake需要2.6版本以上
   # 使用CMake编译Bamboo
 {{{
 cd bamboo
