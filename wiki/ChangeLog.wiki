@@ -1,5 +1,12 @@
 ﻿#summary ChangeLog
 #labels Featured
+2009-03-19
+  * 修正了Makefile不能指定lib路径的问题，现在64位RH机器的用户不需要在手工拷贝lib到lib64了
+  * 修正一个单个英文单词过长导致CRF++出错的问题
+  * 修正Trie结构的一个bug，现在32位和64位系统上可以共用同一个Trie字典了。(由于字典格式的改变用户需要重新build已有的字典)
+  * 修正了当libbamboo被当作shared library引用时，会出现symbol not found的问题
+  * 修正了maxforward分词方法不能正常工作的问题
+
 2008-12-19
   * 分词配置文件中use_break, use_single_combine, use_maxforward_combine选项现在可以正常工作了
   * 修正了一个因为缺少字典而导致PostgreSQL崩溃的Bug
