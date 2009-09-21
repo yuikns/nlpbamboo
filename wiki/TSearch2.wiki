@@ -11,7 +11,7 @@ PostgreSQL分词函数需要安装好Bamboo的系统(不需要Bamboo源代码)�
 == 编译和安装 ==
 
 {{{
-$ cd /opt/bamboo/exts/postgresql/bamboo
+$ cd /opt/bamboo/exts/postgresql/tokenize
 $ make
 $ sudo make install
 }}}
@@ -19,7 +19,7 @@ $ sudo make install
 == 创建分词函数 ==
 {{{
 $ psql
-postgres=# \i /usr/local/pgsql/share/contrib/pg_bamboo.sql
+postgres=# \i /usr/local/pgsql/share/contrib/pg_tokenize.sql
 }}}
 
 == 确保配置文件正确 ==
@@ -29,8 +29,8 @@ postgres=# \i /usr/local/pgsql/share/contrib/pg_bamboo.sql
 == 测试 ==
 
 {{{
-postgres=# select bamboo('中文分词');
- bamboo  
+postgres=# select tokenize('中文分词');
+ tokenize  
 ------------
  中文 分词 
 (1 row)
