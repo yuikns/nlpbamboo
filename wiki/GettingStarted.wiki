@@ -8,8 +8,9 @@
     * 命名实体识别
     * 主题词抽取
 ==Bamboo安装部署==
-  # 从google code的subversion下载bamboo源代码。
-    * 请参考http://code.google.com/p/nlpbamboo/source/checkout
+===用预打包的tar包安装===
+  # 下载源代码
+     * http://nlpbamboo.googlecode.com/files/nlpbamboo-1.1.1.tar.bz2
   # 安装CRF++工具包
     * 请参考 http://crfpp.sourceforge.net
   # 安装CMake编译环境
@@ -49,6 +50,11 @@ make install
    * /opt/bamboo/exts/ : 扩展接口
    * /usr/lib/ : 动态链接库
    * /usr/include/bamboo/ : C/C++的头文件
+===直接在svn代码树上安装===
+
+  # 从google code的subversion下载bamboo源代码。
+    * 请参考http://code.google.com/p/nlpbamboo/source/checkout
+
 ==Bamboo配置==
   # Bamboo安装完成后，其默认的配置文件都在/opt/bamboo/etc/目录下，每个Bamboo Parser都有自己的配置文件
   # Bamboo配置方法可以参见[http://code.google.com/p/nlpbamboo/wiki/Configure Bamboo Configure Guide]，建议初次使用者保留参数不变;对于对程序内部流程相对了解的高级用户，可以根据需要对参数进行调整
