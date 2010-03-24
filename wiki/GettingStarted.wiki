@@ -50,7 +50,7 @@ make install
    * /opt/bamboo/exts/ : 扩展接口
    * /usr/lib/ : 动态链接库
    * /usr/include/bamboo/ : C/C++的头文件
-===直接在svn代码树上安装===
+===直接在svn代码树上编译安装===
 
   # 从google code的subversion下载bamboo源代码。
     * 请参考http://code.google.com/p/nlpbamboo/source/checkout
@@ -70,6 +70,7 @@ make
 sudo make install
 }}}
 
+
 ==Bamboo配置==
   # Bamboo安装完成后，其默认的配置文件都在/opt/bamboo/etc/目录下，每个Bamboo Parser都有自己的配置文件
   # Bamboo配置方法可以参见[http://code.google.com/p/nlpbamboo/wiki/Configure Bamboo Configure Guide]，建议初次使用者保留参数不变;对于对程序内部流程相对了解的高级用户，可以根据需要对参数进行调整
@@ -80,7 +81,7 @@ sudo make install
 ==Bamboo训练统计==
   # Bamboo中的分词，词性标注和命名实体识别算法都是基于由字构词的文本标注思想，因此在使用Bamboo之前需要准备好已完成标注的的文本语料，然后使用CRF++工具包和相应的特征模板进行训练，最终得出各自的字典，统计信息和模型文件
   # Bamboo中的主题词抽取是在TF和IDF的基础上，用词句关系图分析的算法计算所有分词的权重，最终给出Top权重词，因此在使用Bamboo的主题词抽取前也需要收集一定规模的文本语料，对其中的分词进行统计和训练，得出各种词的IDF和同现关系，以供抽取时计算使用。
-  # Bamboo训练方法：
+  # Bamboo训练工具：
 {{{
 /opt/bamboo/bin/auto_build -t [train_type] -f [train_file.txt] -d [train_dir] -p [thread_number]
 }}}
@@ -95,6 +96,16 @@ sudo make install
   # 除了缺省字典，Bamboo还为用户提供了自定义字典的工具lexicon，其具体方法请参考[http://code.google.com/p/nlpbamboo/wiki/Tools Bamboo Tools]，用户可以使用lexicon定制自己的user_combine和break辞典，其功能如下所示：
     * 次 贷 =>  次贷
     * 雅虎口碑 => 雅虎 口碑 
+
+===在代码树中训练模型===
+
+在svn co出来的代码树里面，我们可以直接用下面命令训练模型（在代码树根目录下）：
+
+{{{
+./source/tools/auto_build -t seg
+}}}
+
+生成的字典文件会在代码树根目录下的 index 目录里。
 
 ==Bamboo测试==
   # Bamboo命令行接口：
