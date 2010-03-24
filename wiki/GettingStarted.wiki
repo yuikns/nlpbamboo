@@ -55,6 +55,21 @@ make install
   # 从google code的subversion下载bamboo源代码。
     * 请参考http://code.google.com/p/nlpbamboo/source/checkout
 
+  # 进入源代码目录，配置代码
+{{{
+./configure
+}}}
+
+  # 编译
+{{{
+make
+}}}
+
+  # 安装
+{{{
+sudo make install
+}}}
+
 ==Bamboo配置==
   # Bamboo安装完成后，其默认的配置文件都在/opt/bamboo/etc/目录下，每个Bamboo Parser都有自己的配置文件
   # Bamboo配置方法可以参见[http://code.google.com/p/nlpbamboo/wiki/Configure Bamboo Configure Guide]，建议初次使用者保留参数不变;对于对程序内部流程相对了解的高级用户，可以根据需要对参数进行调整
