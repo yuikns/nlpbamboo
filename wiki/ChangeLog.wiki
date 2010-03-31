@@ -1,5 +1,10 @@
 ﻿#summary ChangeLog
 #labels Featured
+2010-03-31
+  * 整个make系统现在以configure系统为核心运行，configure && make && make install 可以处理绝大部分问题
+  * 修补了auto_build的配置build_settings的安装和缺省路径的bug
+  * 支持源代码目录下 ./source/tools/auto_build -t seg 的动作
+
 2009-03-19
   * 修正了Makefile不能指定lib路径的问题，现在64位RH机器的用户不需要手工拷贝lib到lib64了
   * 修正了一个单个英文单词过长导致CRF++出错的问题
