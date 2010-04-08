@@ -3,7 +3,7 @@
 
 = PostgreSQL 分词函数(不需要TSearch2支持) =
 
-PostgreSQL分词函数需要安装好Bamboo的系统(不需要Bamboo源代码)。
+PostgreSQL分词函数需要安装好Bamboo的系统(不需要Bamboo源代码)和预先安装好的postgresql，编译环境需要能找到 pg_config 命令。
 如果您的系统中没有安装Bamboo，请参考：
   * 从源代码安装Bamboo：HowToBuild
   * Bamboo 二进制包安装方法：BinaryInstall
@@ -11,7 +11,7 @@ PostgreSQL分词函数需要安装好Bamboo的系统(不需要Bamboo源代码)�
 == 编译和安装 ==
 
 {{{
-$ cd /opt/bamboo/exts/postgresql/tokenize
+$ cd /opt/bamboo/exts/postgresql/pg_tokenize
 $ make
 $ sudo make install
 }}}
