@@ -1,4 +1,4 @@
-#summary Getting Started with Bamboo Framework
+#summary Start from here!
 #labels Featured
 ==Bamboo项目介绍==
   # Bamboo项目是一个基于机器学习技术的中文自然语言处理平台。
@@ -50,7 +50,7 @@ make install
    * /opt/bamboo/exts/ : 扩展接口
    * /usr/lib/ : 动态链接库
    * /usr/include/bamboo/ : C/C++的头文件
-===方法二：直接在svn代码树上编译安装===
+===方法二：直接在svn代码树上编译安装 (注：本方法暂时有问题，推荐用上面的方法一安装）===
 
   # 从google code的subversion下载bamboo源代码。
     * 请参考http://code.google.com/p/nlpbamboo/source/checkout
