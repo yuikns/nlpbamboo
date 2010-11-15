@@ -10,7 +10,7 @@
 ==Bamboo安装部署==
 ===用预打包的tar包安装===
   # 下载源代码
-     * http://nlpbamboo.googlecode.com/files/nlpbamboo-1.1.1.tar.bz2
+     * http://nlpbamboo.googlecode.com/files/nlpbamboo-1.1.2.tar.bz2
   # 安装CRF++工具包
     * 请参考 http://crfpp.sourceforge.net
   # 安装CMake编译环境
