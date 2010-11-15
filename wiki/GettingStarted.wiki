@@ -8,7 +8,7 @@
     * 命名实体识别
     * 主题词抽取
 ==Bamboo安装部署==
-===用预打包的tar包安装===
+===方法一: 用预打包的tar包安装===
   # 下载源代码
      * http://nlpbamboo.googlecode.com/files/nlpbamboo-1.1.2.tar.bz2
   # 安装CRF++工具包
@@ -50,7 +50,7 @@ make install
    * /opt/bamboo/exts/ : 扩展接口
    * /usr/lib/ : 动态链接库
    * /usr/include/bamboo/ : C/C++的头文件
-===直接在svn代码树上编译安装===
+===方法二：直接在svn代码树上编译安装===
 
   # 从google code的subversion下载bamboo源代码。
     * 请参考http://code.google.com/p/nlpbamboo/source/checkout
