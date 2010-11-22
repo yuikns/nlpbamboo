@@ -50,26 +50,11 @@ make install
    * /opt/bamboo/exts/ : 扩展接口
    * /usr/lib/ : 动态链接库
    * /usr/include/bamboo/ : C/C++的头文件
-===方法二：直接在svn代码树上编译安装 (注：本方法暂时有问题，推荐用上面的方法一安装）===
+===方法二：直接在svn代码树上编译安装===
 
   # 从google code的subversion下载bamboo源代码。
     * 请参考http://code.google.com/p/nlpbamboo/source/checkout
-
-  # 进入源代码目录，配置代码
-{{{
-./configure
-}}}
-
-  # 编译
-{{{
-make
-}}}
-
-  # 安装
-{{{
-sudo make install
-}}}
-
+    * 参照方法一进行安装 （同时提供configure&make&make install支持，但目前Makefile还有问题)
 
 ==Bamboo配置==
   # Bamboo安装完成后，其默认的配置文件都在/opt/bamboo/etc/目录下，每个Bamboo Parser都有自己的配置文件
