@@ -54,7 +54,8 @@ make install
 
   # 从google code的subversion导出最新的bamboo trunk源码:
     * svn checkout http://nlpbamboo.googlecode.com/svn/trunk/ nlpbamboo-read-only
-    * 参照方法一进行安装 （同时提供configure&make&make install支持，但目前Makefile还有问题)
+    * ./configure; make; make install
+    * 不再强制安装在/opt/bamboo，make后可以直接使用
 
 ==Bamboo配置==
   # Bamboo安装完成后，其默认的配置文件都在/opt/bamboo/etc/目录下，每个Bamboo Parser都有自己的配置文件
